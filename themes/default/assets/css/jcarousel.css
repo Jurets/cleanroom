@@ -1,0 +1,34 @@
+.jcarousel-skin-default{position:relative;padding:0 14px;}
+.jcarousel-skin-default .jcarousel {
+    position: relative;
+    overflow: hidden;
+    height: 96px;
+}
+
+.jcarousel-skin-default ul {
+    width: 20000px;
+    position: absolute;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.jcarousel-skin-default li {
+    float: left;
+    margin: 0 7px 0 0;
+    padding: 0;
+}
+
+/** Custom **/
+
+.jcarousel-skin-default li img {
+    border: 1px solid #e5e5e5;
+}
+.jcarousel-skin-default li a:hover img{border-color:#fc7317;}
+
+.jcarousel-skin-default .car_btn{display:block;position:absolute;background:url(../images/car_btns.png) 0 0 no-repeat;top:50%;width:7px;height:11px;margin-top:-5px;}
+.jcarousel-skin-default .car_btn:focus{outline:none;}
+.jcarousel-skin-default .car_btn.lbtn{left:0;}
+.jcarousel-skin-default .car_btn.rbtn{right:0;background-position:-7px 0;}
+.jcarousel-skin-default .car_btn.lbtn:hover{left:1px;}
+.jcarousel-skin-default .car_btn.rbtn:hover{right:1px;}
