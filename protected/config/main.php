@@ -75,9 +75,9 @@ return array(
 			),
 		),
 		'db'=>array(
-			'connectionString'=>'mysql:host=localhost;dbname=u7757239_chisto',
-			'username'=>'u7757_chisto',
-			'password'=>'qhH1z08!',
+			'connectionString'=>'mysql:host=localhost;dbname=chisto',
+			'username'=>'root',
+			'password'=>'',
 			'enableProfiling'       => YII_DEBUG, // Disable in production
 			'enableParamLogging'    => YII_DEBUG, // Disable in production
 			'emulatePrepare'        => true,
