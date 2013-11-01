@@ -28,7 +28,7 @@ class FrontProductController extends Controller
 	 * @param string $url product url
 	 */
 	public function actionView($url)
-	{
+	{//DebugBreak();
 		$this->_loadModel($url);
 		$view = $this->setDesign($this->model, 'view');
 
