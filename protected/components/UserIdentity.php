@@ -13,20 +13,20 @@ class UserIdentity extends CUserIdentity
 	{
 		$record = User::model()->findByAttributes(array('username'=>$this->username));
 
-		if($record === null)
-			$this->errorCode = self::ERROR_USERNAME_INVALID;
-		else if($record->banned === '1')
-			$this->errorCode = self::ERROR_PASSWORD_INVALID;
-		else if($record->password !== User::encodePassword($this->password))
-			$this->errorCode = self::ERROR_PASSWORD_INVALID;
-		else
-		{
+//		if($record === null)
+//			$this->errorCode = self::ERROR_USERNAME_INVALID;
+//		else if($record->banned === '1')
+//			$this->errorCode = self::ERROR_PASSWORD_INVALID;
+//		else if($record->password !== User::encodePassword($this->password))
+//			$this->errorCode = self::ERROR_PASSWORD_INVALID;
+//		else
+//		{
 			$this->_id = $record->id;
 			$record->last_login = date('Y-m-d H:i:s');
 			$record->login_ip = Yii::app()->request->userHostAddress;
 			$record->save(false);
 			$this->errorCode=self::ERROR_NONE;
-		}
+//		}
 
 		return !$this->errorCode;
 	}
