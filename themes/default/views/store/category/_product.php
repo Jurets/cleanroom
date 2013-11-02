@@ -17,7 +17,7 @@
                                 <span class="inf">Артикул: XXXX<br />Мощность - FFFF Вт<br />Высота - 50 см</span>
                                 <span class="btm_pad">
                                 	<?php if ($data->price > 0) : ?>
-                                		<span class="price"><strong>2,400</strong> р.</span>
+                                		<span class="price"><strong><?=$data->price?></strong> <?=Yii::app()->currency->main->symbol?></span>
                                 	<?php endif; ?>
                                 </span>
                             </span>

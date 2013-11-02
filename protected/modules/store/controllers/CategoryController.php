@@ -266,8 +266,9 @@ class CategoryController extends Controller
 	public function applyPricesFilter()
 	{
 		$minPrice=Yii::app()->request->getQuery('min_price');
-		$maxPrice=Yii::app()->request->getQuery('max_price');
-
+        $maxPrice=Yii::app()->request->getQuery('max_price');
+		$currency=Yii::app()->request->getQuery('currency');
+        Yii::app()->currency->setActive($currency);
 		$cm=Yii::app()->currency;
 		if($cm->active->id!==$cm->main->id && ($minPrice>0||$maxPrice>0))
 		{

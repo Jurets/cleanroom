@@ -50,15 +50,51 @@ $this->breadcrumbs[] = $this->model->name;
                         </div>
 
                         <form action="" class="filter">
-                        	<div class="line line2">
-
-								<?php
-									$this->widget('application.modules.store.widgets.filter.SFilterRenderer', array(
-										'model'=>$this->model,
-										'attributes'=>$this->eavAttributes,
-									));
-								?>
-                            	<div class="clr"></div>
+                            <div class="line line2">
+                                <div class="key_word">
+                                    <label for="">Ключевое слово</label>
+                                    <input type="text" value="" />
+                                </div>
+                                <div class="range">
+                                    <label for="">Стоимость  от:</label>
+                                    <input type="text" value="" name="min_price" />
+                                    <label for="">до:</label>
+                                    <input type="text" value="" name="max_price"/>
+                                    <select class="sm" name="currency" id="">
+                                        <option value="2">руб</option>
+                                        <option value="1">usd</option>
+                                    </select>
+                                </div>
+                                <input type="submit" class="btn" value="искать" />
+                                <div class="clr"></div>
+                            </div>
+                            <div class="line">
+                                <div class="sort">
+                                    <label for="">Сортировать по: </label>
+                                    <select name="" id="" class="sm">
+                                        <option value="1">Рейтингу</option>
+                                        <option value="2">Рейтингу 2</option>
+                                    </select>
+                                </div>
+                                <?
+                                    $limits=array(Yii::app()->request->removeUrlParam('/store/category/view', 'per_page')  => $this->allowedPageLimit[0]);
+                                    array_shift($this->allowedPageLimit);
+                                    foreach($this->allowedPageLimit as $l)
+                                        $limits[Yii::app()->request->addUrlParam('/store/category/view', array('per_page'=> $l))]=$l;
+                                 ?>
+                                <p class="size">Показывать по:    
+                                <?
+                                     foreach($limits as $key => $val){
+                                         echo '<a href="javascript:void(0);" onclick="foo(\''.$key.'\');">'.$val.'</a>';
+                                     }
+                                 ?>
+                                 <script type="">
+                                 function foo(url){
+                                     window.location = url;
+                                 }
+                                 </script>
+                                <p class="items_num">Товаров: <span>678</span></p>
+                                <div class="clr"></div>
                             </div>
                         </form>
 
