@@ -40,7 +40,7 @@
 
 				<?php echo CHtml::form($this->createUrl('/store/category/search')) ?>
 					<input type="text" value="Поиск товаров" name="q" id="searchQuery">
-					<button type="submit"></button>
+					<input type="submit" value="">
 				<?php echo CHtml::endForm() ?>
 
                 <div class="clear"></div>
@@ -53,14 +53,14 @@
 
             <div class="hd_pad1">
             	<p class="tel">8 800 795-62-90<br />8 800 795-62-90</p>
-                <p class="worktime">Работаем с 900  до 2100  без выходных</p>
+                <p class="worktime">Работаем с 9:00  до 21:00  без выходных</p>
             </div>
 
             <ul id="menu_top">
-                 <li><a href="#">Главная</a></li>
 			<?php
 				$this->widget('zii.widgets.CMenu2', array(
 					'items'=>array(
+                        array('label'=>Yii::t('core', 'Главная'), 'url'=>Yii::app()->createAbsoluteUrl()),
 						array('label'=>Yii::t('core', 'Помощь'), 'url'=>array('/pages/pages/view', 'url'=>'help'),),
 						array('label'=>Yii::t('core', 'Как сделать заказ'), 'url'=>array('/pages/pages/view', 'url'=>'how-to-create-order')),
 						array('label'=>Yii::t('core', 'Гарантия'), 'url'=>array('/pages/pages/view', 'url'=>'garantiya')),

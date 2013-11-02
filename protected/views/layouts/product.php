@@ -54,14 +54,14 @@
 
             <div class="hd_pad1">
             	<p class="tel">8 800 795-62-90<br />8 800 795-62-90</p>
-                <p class="worktime">Работаем с 900  до 2100  без выходных</p>
+                <p class="worktime">Работаем с 9:00  до 21:00  без выходных</p>
             </div>
 
             <ul id="menu_top">
-                 <li><a href="#">Главная</a></li>
 			<?php
 				$this->widget('zii.widgets.CMenu2', array(
 					'items'=>array(
+                        array('label'=>Yii::t('core', 'Главная'), 'url'=>Yii::app()->createAbsoluteUrl()),
 						array('label'=>Yii::t('core', 'Помощь'), 'url'=>array('/pages/pages/view', 'url'=>'help'),),
 						array('label'=>Yii::t('core', 'Как сделать заказ'), 'url'=>array('/pages/pages/view', 'url'=>'how-to-create-order')),
 						array('label'=>Yii::t('core', 'Гарантия'), 'url'=>array('/pages/pages/view', 'url'=>'garantiya')),
@@ -78,29 +78,32 @@
     <div class="content">
     	<div class="wrap">
 
-            <div class="slider_wr">
+<!--            <div class="slider_wr">
             	<ul id="slider">
                 	<li><img src="/themes/default/assets/images/slide01.jpg" width="960" height="323" alt="" /></li>
                     <li><img src="/themes/default/assets/images/slide02.jpg" width="960" height="323" alt="" /></li>
                 </ul>
-            </div>
+            </div>-->
 
             <div class="lc">
 
-              <h3 class="title2">Категории</h3>
+              <h3 class="title">Категории</h3>
 
-              <div class="brend_list">
-
-						<?php
-							Yii::import('application.modules.store.models.StoreManufacturer');
-							$items = StoreManufacturer::model()->findAll();
-							foreach ($items as $item)
-							{
-								echo '<a href="/manufacturer/'.$item['url'].'" class="item"><img src="/uploads/brands/brend'.$item['id'].'.jpg" width="143" height="54" alt="" /></a>';
-							}
-						?>
-                <div class="clr"></div>
-              </div>
+            <?php
+                Yii::import('application.modules.store.models.StoreCategory');
+                $items = StoreCategory::model()->findByPk(1)->asCMenuArray();
+                if(isset($items['items']))
+                {
+                    $this->widget('application.extensions.mbmenu.MbMenu',array(
+                        'cssFile'=>Yii::app()->theme->baseUrl.'/assets/css/menu.css',
+//                        'htmlOptions'=>array('id'=>'side_menu'),
+                        'items'=>$items['items'],
+                        'id'=>'side_menu',
+                        'activateParents'=>false
+                        )
+                    );
+                }
+            ?>
 
               <div class="banner"><a href=""><img src="/themes/default/assets/images/banner01.jpg" width="198" height="298" alt="" /></a></div>
 

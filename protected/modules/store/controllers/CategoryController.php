@@ -150,7 +150,8 @@ class CategoryController extends Controller
 		));
 
 		$this->provider->sort = StoreProduct::getCSort();
-
+        
+        $this->layout = '//layouts/product';
 		$this->render($view, array(
 			'provider'=>$this->provider,
 			'itemView'=>(isset($_GET['view']) && $_GET['view']==='wide') ? '_product_wide' : '_product'
