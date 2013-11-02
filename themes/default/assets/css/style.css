@@ -228,7 +228,16 @@ border-radius:4px 4px 0 0;behavior: url(js/pie.htc);}
 .item_list3 h3{margin:0 0 22px;}
 .item_list3 .item{float:left;width:161px;margin:0 0 0 40px;text-align:center;}
 .item_list3 .item.first{margin-left:0;}
-.item_list3 .item img{border:1px solid #ededed;display:block;margin:0 0 10px;}
+
+.item_list3 .item img{
+    border:1px solid #ededed;
+    display:block;
+    margin:0 0 10px;
+    width: 190px;
+    height: 150px;
+}
+
+
 .item_list3 .item:hover img{border-color:#ffe553;}
 
 .brend_list{overflow:hidden;margin:28px 0 22px;}

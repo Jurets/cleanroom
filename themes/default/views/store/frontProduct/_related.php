@@ -5,10 +5,13 @@
  * @var StoreProduct $model
  */
 ?>
-<div class="products_list">
-	<?php foreach($model->relatedProducts as $data):  ?>
-		<div class="product_block">
-			<div class="image">
+<div class="item_list3">
+	<?php 
+    $index = 0;
+    foreach($model->relatedProducts as $data) {
+        $isFirst = !$index++ ? ' first' : '';  ?>
+		<div class="item<?php echo $isFirst; ?>">
+			<!--<div class="image">-->
 				<?php
 				if($data->mainImage)
 					$imgSource = $data->mainImage->getUrl('190x150');
@@ -16,7 +19,7 @@
 					$imgSource = 'http://placehold.it/190x150';
 				echo CHtml::link(CHtml::image($imgSource), array('frontProduct/view', 'url'=>$data->url));
 				?>
-			</div>
+			<!--</div>-->
 			<div class="name">
 				<?php echo CHtml::link(CHtml::encode($data->name), array('frontProduct/view', 'url'=>$data->url)) ?>
 			</div>
@@ -48,7 +51,7 @@
 				<?php echo Chtml::endForm() ?>
 			</div>
 		</div>
-	<?php endforeach; ?>
+	<?php } ?>
 </div>
 
 

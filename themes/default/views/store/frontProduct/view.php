@@ -117,75 +117,33 @@ $this->widget('application.extensions.fancybox.EFancyBox', array(
                 </div>
                 
                 <div class="item_inf">
-                       <h3>Описание товара: </h3>
-                    <p>Lorem Ipsum - это текст-"рыба", часто используемый в печати и вэб-дизайне. Lorem Ipsum является стандартной "рыбой" для текстов на латинице с начала XVI века. В то время некий безымянный печатник создал большую коллекцию размеров и форм шрифтов, используя Lorem Ipsum для распечатки образцов. Lorem Ipsum не только успешно пережил без заметных изменений пять веков, но и перешагнул в электронный дизайн. </p>
-                    <h3>Характеристики товара</h3>
-                    <table>
-                        <tbody>
-                            <tr>
-                                <td>Производитель</td><td>Skil</td>
-                            </tr>
-                            <tr>
-                                <td>Модель</td><td>001AA</td>
-                            </tr>
-                            <tr>
-                                <td>Тип</td><td>дрель / шуруповерт</td>
-                            </tr>
-                            <tr>
-                                <td>Патрон</td><td>быстрозажимной</td>
-                            </tr>
-                            <tr>
-                                <td>Количество скоростей</td><td>2</td>
-                            </tr>
-                            <tr>
-                                <td>Скорость</td><td>№ 1 • 0 об/мин 400 об/мин ; № 2 • 0 об/мин 1100 об/мин </td>
-                            </tr>
-                            <tr>
-                                <td>Максимальный момент</td><td>28 Н*м</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <h3>Комплектация</h3>
-                    <table>
-                        <tbody>
-                            <tr>
-                                <td>Производитель</td><td>Skil</td>
-                            </tr>
-                            <tr>
-                                <td>Модель</td><td>001AA</td>
-                            </tr>
-                            <tr>
-                                <td>Тип</td><td>дрель / шуруповерт</td>
-                            </tr>
-                            <tr>
-                                <td>Патрон</td><td>быстрозажимной</td>
-                            </tr>
-                            <tr>
-                                <td>Количество скоростей</td><td>2</td>
-                            </tr>
-                            <tr>
-                                <td>Скорость</td><td>№ 1 • 0 об/мин 400 об/мин ; № 2 • 0 об/мин 1100 об/мин </td>
-                            </tr>
-                            <tr>
-                                <td>Максимальный момент</td><td>28 Н*м</td>
-                            </tr>
-                        </tbody>
-                    </table>
+                    <h3><?php echo Yii::t('StoreModule.core', 'Описание товара'); ?></h3>
+                    <p><?php echo $model->short_description; ?></p>
+                    
+                    <h3><?php echo Yii::t('StoreModule.core', 'Характеристики товара'); ?></h3>
+                    <?php
+                        if($model->getEavAttributes())
+                        {
+                            $this->widget('application.modules.store.widgets.SAttributesTableRenderer', array(
+                                'model'=>$model,
+                                'htmlOptions'=>array(
+                                    'class'=>'attributes'
+                                ),
+                            ));
+                        }
+                    ?>
                     
                     <div class="item_list3">
-                        <h3>С этим товаром обычно покупают:</h3>
-                        <a href="" class="item first">
+                        <h3><?php echo Yii::t('StoreModule.core', 'С этим товаром обычно покупают'); ?>:</h3>
+                        <!--<a href="" class="item first">
                             <img src="images/item_img11.jpg" width="159" height="149" alt="" />
                             <span>Мойки высокого <br />давления</span>
-                        </a>
-                        <a href="" class="item">
-                            <img src="images/item_img11.jpg" width="159" height="149" alt="" />
-                            <span>Мойки высокого <br />давления</span>
-                        </a>
-                        <a href="" class="item">
-                            <img src="images/item_img11.jpg" width="159" height="149" alt="" />
-                            <span>Мойки высокого <br />давления</span>
-                        </a>
+                        </a>-->
+                        <?php if($model->relatedProductCount) {
+                                $this->renderPartial('_related', array('model'=>$model)/*, true*/);
+                            }
+
+                        //$this->renderPartial('_configurations', array('model'=>$model)); ?>
                         <div class="clr"></div>
                     </div>
                     
