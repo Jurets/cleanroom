@@ -61,12 +61,6 @@ $this->widget('application.extensions.fancybox.EFancyBox', array(
                         </a>
                         <div class="sm_imgs jcarousel-skin-default">
                             <div class="jcarousel " id="jcarousel">
-                                <!--<ul>
-                                    <li><a href="images/big_img01.jpg"><img src="images/sm_img01.jpg" width="96" height="94" alt=""/></a></li>
-                                    <li><a href="images/big_img02.jpg"><img src="images/sm_img02.jpg" width="96" height="94" alt=""/></a></li>
-                                    <li><a href="images/big_img01.jpg"><img src="images/sm_img01.jpg" width="96" height="94" alt=""/></a></li>
-                                    <li><a href="images/big_img02.jpg"><img src="images/sm_img02.jpg" width="96" height="94" alt=""/></a></li>
-                                </ul>-->
                                 <?php // Display additional images
                                     foreach($model->imagesNoMain as $image) {
                                         echo CHtml::openTag('li', array('class'=>'span2'));
@@ -80,13 +74,11 @@ $this->widget('application.extensions.fancybox.EFancyBox', array(
                         </div>
                     </div>
                     <div class="flr">
+                      
                         <?php echo CHtml::form(array('/orders/cart/add'), 'post', array('class'=>'item_form')) ?>
-                        <h1><?php echo CHtml::encode($model->name); ?></h1>
-                        <p class="type"> (Уборочные тележки и инвентарь)</p>
-                        <p>
-                            Длина в разложенном состоянии: 170 см <br />Ширина: 70 см <br />Вес: 30 кг <br />Объем: min. 1,02 м3 <br />Высота: от 750 мм
-                        </p>
-                        <!--<form action="" class="item_form">-->
+                            <h1><?php echo CHtml::encode($model->name); ?></h1>
+                            <p class="type"> (Уборочные тележки и инвентарь)</p>
+                            <p>Длина в разложенном состоянии: 170 см <br />Ширина: 70 см <br />Вес: 30 кг <br />Объем: min. 1,02 м3 <br />Высота: от 750 мм</p>
                             <div class="colors">
                                 <p>Цвета:</p>
                                 <div class="line">
@@ -100,7 +92,57 @@ $this->widget('application.extensions.fancybox.EFancyBox', array(
                                     <div class="clr"></div>
                                 </div>
                             </div>
-                            <p class="price">Цена: <span><?php echo StoreProduct::formatPrice($model->toCurrentCurrency()); ?></span></p>
+                            
+                            <p class="price">
+                                Цена: 
+                                <span><?php echo StoreProduct::formatPrice($model->toCurrentCurrency()); ?></span>
+                            </p>
+                            <div style="clear: both;font-size: 16px">
+                                <?php
+                                if($model->appliedDiscount)
+                                    echo '<span style="color:red; "><s>'.$model->toCurrentCurrency('originalPrice').' '.Yii::app()->currency->active->symbol.'</s></span>';
+                                ?>
+                            </div>
+                            
+                            <div class="errors" id="productErrors"></div>
+                            
+                            <!-- <div class="actions">
+                            <?php
+                                echo CHtml::hiddenField('product_id', $model->id);
+                                echo CHtml::hiddenField('product_price', $model->price);
+                                echo CHtml::hiddenField('use_configurations', $model->use_configurations);
+                                echo CHtml::hiddenField('currency_rate', Yii::app()->currency->active->rate);
+                                echo CHtml::hiddenField('configurable_id', 0);
+                                echo CHtml::hiddenField('quantity', 1);
+
+                                /*if($model->isAvailable)
+                                {
+                                    echo CHtml::ajaxSubmitButton(Yii::t('StoreModule.core','Купить'), array('/orders/cart/add'), array(
+                                        'dataType' => 'json',
+                                        'success'  => 'js:function(data, textStatus, jqXHR){processCartResponse(data, textStatus, jqXHR)}',
+                                    ), array(
+                                        'id'=>'buyButton',
+                                        'class'=>'blue_button'
+                                    ));
+                                }
+                                else
+                                {
+                                    echo CHtml::link('Сообщить о появлении', '#', array(
+                                        'onclick' => 'showNotifierPopup('.$model->id.'); return false;',
+                                    ));
+                                }
+
+                                echo CHtml::endForm();*/
+                            ?>
+
+                            <div class="silver_clean silver_button">
+                                <button title="<?=Yii::t('core','Сравнить')?>" onclick="return addProductToCompare(<?php echo $model->id ?>);"><span class="icon compare"></span>Сравнить</button>
+                            </div>
+
+                            <div class="silver_clean silver_button">
+                                <button title="<?=Yii::t('core','В список желаний')?>" onclick="return addProductToWishList(<?php echo $model->id ?>);"><span class="icon heart"></span>Список желаний</button>
+                            </div> -->
+                            
                             <div class="line">
                                 <div class="spinner_box">
                                     <label for="">К-во:</label>
@@ -109,7 +151,6 @@ $this->widget('application.extensions.fancybox.EFancyBox', array(
                                 <span class="btn2"><span><input type="button" value="В корзину" /></span></span>
                                 <div class="clr"></div>
                             </div>
-                        <!--</form>-->
                         <?php echo CHtml::endForm(); ?>
                         
                     </div>
@@ -119,6 +160,7 @@ $this->widget('application.extensions.fancybox.EFancyBox', array(
                 <div class="item_inf">
                     <h3><?php echo Yii::t('StoreModule.core', 'Описание товара'); ?></h3>
                     <p><?php echo $model->short_description; ?></p>
+                    <p><?php echo $model->full_description; ?></p>
                     
                     <h3><?php echo Yii::t('StoreModule.core', 'Характеристики товара'); ?></h3>
                     <?php
@@ -135,14 +177,9 @@ $this->widget('application.extensions.fancybox.EFancyBox', array(
                     
                     <div class="item_list3">
                         <h3><?php echo Yii::t('StoreModule.core', 'С этим товаром обычно покупают'); ?>:</h3>
-                        <!--<a href="" class="item first">
-                            <img src="images/item_img11.jpg" width="159" height="149" alt="" />
-                            <span>Мойки высокого <br />давления</span>
-                        </a>-->
                         <?php if($model->relatedProductCount) {
                                 $this->renderPartial('_related', array('model'=>$model)/*, true*/);
                             }
-
                         //$this->renderPartial('_configurations', array('model'=>$model)); ?>
                         <div class="clr"></div>
                     </div>
@@ -151,147 +188,52 @@ $this->widget('application.extensions.fancybox.EFancyBox', array(
                 
             </div>
             
+	        <?php
+		        /*$tabs = array();
+
+		        // EAV tab
+		        if($model->getEavAttributes())
+		        {
+			        $tabs[Yii::t('StoreModule.core', 'Характеристики')] = array(
+				        'content'=>$this->renderPartial('_attributes', array('model'=>$model), true
+			        ));
+		        }
+
+		        // Comments tab
+		        $tabs[Yii::t('StoreModule.core', 'Отзывы').' ('.$model->commentsCount.')'] = array(
+			        'id'=>'comments_tab',
+			        'content'=>$this->renderPartial('comments.views.comment.create', array(
+				        'model'=>$model,
+			        ), true));
+
+		        // Related products tab
+		        if($model->relatedProductCount)
+		        {
+			        $tabs[Yii::t('StoreModule.core', 'Сопутствующие продукты').' ('.$model->relatedProductCount.')'] = array(
+				        'id'=>'related_products_tab',
+				        'content'=>$this->renderPartial('_related', array(
+					        'model'=>$model,
+				        ), true));
+		        }
+
+		        // Render tabs
+		        $this->widget('zii.widgets.jui.CJuiTabs', array(
+			        'id'=>'tabs',
+			        'tabs'=>$tabs
+		        ));
+
+		        // Fix tabs opening by anchor
+		        Yii::app()->clientScript->registerScript('tabSelector', '
+			        $(function() {
+				        var anchor = $(document).attr("location").hash;
+				        var result = $("#tabs").find(anchor).parents(".ui-tabs-panel");
+				        if($(result).length)
+				        {
+					        $("#tabs").tabs("select", "#"+$(result).attr("id"));
+				        }
+			        });
+		        ');*/
+	        ?>
     </div>    
-
-
-
-
-
-	<div class="images">
-		<div class="image_row">
-			<div class="main">
-				<?php
-					// Main product image
-					if($model->mainImage)
-						echo CHtml::link(CHtml::image($model->mainImage->getUrl('340x250', 'resize'), $model->mainImage->title), $model->mainImage->getUrl(), array('class'=>'thumbnail'));
-					else
-						echo CHtml::link(CHtml::image('http://placehold.it/340x250'), '#', array('class'=>'thumbnail'));
-				?>
-			</div>
-		</div>
-		<div class="additional">
-			<ul>
-			<?php
-			// Display additional images
-			foreach($model->imagesNoMain as $image)
-			{
-				echo CHtml::openTag('li', array('class'=>'span2'));
-				echo CHtml::link(CHtml::image($image->getUrl('160x120'), $image->title), $image->getUrl(), array('class'=>'thumbnail'));
-				echo CHtml::closeTag('li');
-			}
-			?>
-			</ul>
-		</div>
-	</div>
-
-	<div class="info">
-		<?php echo CHtml::form(array('/orders/cart/add')) ?>
-
-		<h1><?php echo CHtml::encode($model->name); ?></h1>
-
-		<?php $this->renderPartial('_configurations', array('model'=>$model)); ?>
-
-		<div class="errors" id="productErrors"></div>
-
-		<div style="clear: both;font-size: 16px">
-			<?php
-			if($model->appliedDiscount)
-				echo '<span style="color:red; "><s>'.$model->toCurrentCurrency('originalPrice').' '.Yii::app()->currency->active->symbol.'</s></span>';
-			?>
-		</div>
-
-		<div class="price">
-			<span id="productPrice"><?php echo StoreProduct::formatPrice($model->toCurrentCurrency()); ?></span>
-			<?php echo Yii::app()->currency->active->symbol; ?>
-		</div>
-
-		<div class="actions">
-			<?php
-				echo CHtml::hiddenField('product_id', $model->id);
-				echo CHtml::hiddenField('product_price', $model->price);
-				echo CHtml::hiddenField('use_configurations', $model->use_configurations);
-				echo CHtml::hiddenField('currency_rate', Yii::app()->currency->active->rate);
-				echo CHtml::hiddenField('configurable_id', 0);
-				echo CHtml::hiddenField('quantity', 1);
-
-				if($model->isAvailable)
-				{
-					echo CHtml::ajaxSubmitButton(Yii::t('StoreModule.core','Купить'), array('/orders/cart/add'), array(
-						'dataType' => 'json',
-						'success'  => 'js:function(data, textStatus, jqXHR){processCartResponse(data, textStatus, jqXHR)}',
-					), array(
-						'id'=>'buyButton',
-						'class'=>'blue_button'
-					));
-				}
-				else
-				{
-					echo CHtml::link('Сообщить о появлении', '#', array(
-						'onclick' => 'showNotifierPopup('.$model->id.'); return false;',
-					));
-				}
-
-				echo CHtml::endForm();
-			?>
-
-			<div class="silver_clean silver_button">
-				<button title="<?=Yii::t('core','Сравнить')?>" onclick="return addProductToCompare(<?php echo $model->id ?>);"><span class="icon compare"></span>Сравнить</button>
-			</div>
-
-			<div class="silver_clean silver_button">
-				<button title="<?=Yii::t('core','В список желаний')?>" onclick="return addProductToWishList(<?php echo $model->id ?>);"><span class="icon heart"></span>Список желаний</button>
-			</div>
-		</div>
-		<div class="desc"><?php echo $model->short_description; ?></div>
-		<div class="desc"><?php echo $model->full_description; ?></div>
-	</div>
-
-	<div style="clear:both;"></div>
-
-	<?php
-		$tabs = array();
-
-		// EAV tab
-		if($model->getEavAttributes())
-		{
-			$tabs[Yii::t('StoreModule.core', 'Характеристики')] = array(
-				'content'=>$this->renderPartial('_attributes', array('model'=>$model), true
-			));
-		}
-
-		// Comments tab
-		$tabs[Yii::t('StoreModule.core', 'Отзывы').' ('.$model->commentsCount.')'] = array(
-			'id'=>'comments_tab',
-			'content'=>$this->renderPartial('comments.views.comment.create', array(
-				'model'=>$model,
-			), true));
-
-		// Related products tab
-		if($model->relatedProductCount)
-		{
-			$tabs[Yii::t('StoreModule.core', 'Сопутствующие продукты').' ('.$model->relatedProductCount.')'] = array(
-				'id'=>'related_products_tab',
-				'content'=>$this->renderPartial('_related', array(
-					'model'=>$model,
-				), true));
-		}
-
-		// Render tabs
-		$this->widget('zii.widgets.jui.CJuiTabs', array(
-			'id'=>'tabs',
-			'tabs'=>$tabs
-		));
-
-		// Fix tabs opening by anchor
-		Yii::app()->clientScript->registerScript('tabSelector', '
-			$(function() {
-				var anchor = $(document).attr("location").hash;
-				var result = $("#tabs").find(anchor).parents(".ui-tabs-panel");
-				if($(result).length)
-				{
-					$("#tabs").tabs("select", "#"+$(result).attr("id"));
-				}
-			});
-		');
-	?>
+        
 </div>
