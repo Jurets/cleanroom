@@ -267,7 +267,8 @@ class CategoryController extends Controller
 	{
 		$minPrice=Yii::app()->request->getQuery('min_price');
         $maxPrice=Yii::app()->request->getQuery('max_price');
-		$currency=Yii::app()->request->getQuery('currency');
+        $currency=Yii::app()->request->getQuery('currency');
+		$word=Yii::app()->request->getQuery('key_word');
         Yii::app()->currency->setActive($currency);
 		$cm=Yii::app()->currency;
 		if($cm->active->id!==$cm->main->id && ($minPrice>0||$maxPrice>0))
@@ -275,6 +276,8 @@ class CategoryController extends Controller
 			$minPrice=$cm->activeToMain($minPrice);
 			$maxPrice=$cm->activeToMain($maxPrice);
 		}
+        
+        if(isset($word) && !empty($word)) $this->query->applyKeyWord($word);
 
 		if($minPrice>0)
 			$this->query->applyMinPrice($minPrice);

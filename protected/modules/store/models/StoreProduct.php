@@ -258,12 +258,23 @@ class StoreProduct extends BaseModel
 	 * Filter products by man_price
 	 * @param $value
 	 */
-	public function applyMaxPrice($value)
+    public function applyMaxPrice($value)
+	{
+        if($value)
+        {
+            $criteria = new CDbCriteria;
+            $criteria->addCondition('t.price <= '.(int)$value);
+            $this->getDbCriteria()->mergeWith($criteria);
+        }
+        return $this;
+    }	
+    
+    public function applyKeyWord($value)
 	{
 		if($value)
 		{
 			$criteria = new CDbCriteria;
-			$criteria->addCondition('t.price <= '.(int)$value);
+			$criteria->addCondition('t.url LIKE "%'.$value.'%"');
 			$this->getDbCriteria()->mergeWith($criteria);
 		}
 		return $this;

@@ -18,6 +18,8 @@ class SAttributesTableRenderer extends CWidget
 	 * @var BaseModel with EAV behavior enabled
 	 */
 	public $model;
+    public $limitRows = 0;
+    public $separator = '';
 
 	/**
 	 * @var array table element attributes
@@ -48,12 +50,19 @@ class SAttributesTableRenderer extends CWidget
 		if(!empty($data))
 		{
 			echo CHtml::openTag('table', $this->htmlOptions);
+            $count = 1;
 			foreach($data as $title=>$value)
 			{
 				echo CHtml::openTag('tr');
 				echo '<td>'.CHtml::encode($title).'</td>';
+                if($this->separator !== '')
+                    echo '<td>'.$this->separator.'</td>';
 				echo '<td>'.CHtml::encode($value).'</td>';
 				echo CHtml::closeTag('tr');
+                if($this->limitRows > 0){
+                    if($this->limitRows === $count) break;
+                    $count++;
+                }
 			}
 			echo CHtml::closeTag('table');
 		}

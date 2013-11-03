@@ -53,7 +53,7 @@ $this->breadcrumbs[] = $this->model->name;
                             <div class="line line2">
                                 <div class="key_word">
                                     <label for="">Ключевое слово</label>
-                                    <input type="text" value="" />
+                                    <input type="text" value="" name="key_word"/>
                                 </div>
                                 <div class="range">
                                     <label for="">Стоимость  от:</label>
@@ -93,7 +93,7 @@ $this->breadcrumbs[] = $this->model->name;
                                      window.location = url;
                                  }
                                  </script>
-                                <p class="items_num">Товаров: <span>678</span></p>
+                                <p class="items_num">Товаров: <span><?=$provider->totalItemCount?></span></p>
                                 <div class="clr"></div>
                             </div>
                         </form>
