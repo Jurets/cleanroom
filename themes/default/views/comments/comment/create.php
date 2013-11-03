@@ -65,7 +65,7 @@ if(!empty($comments))
 		<?php if(Yii::app()->user->isGuest): ?>
 		<div class="row">
 			<?php echo CHtml::activeLabelEx($comment, 'verifyCode')?>
-			<? $this->widget('CCaptcha', array(
+			<?php $this->widget('CCaptcha', array(
 				'clickableImage'=>true,
 				'showRefreshButton'=>false,
 			)) ?>

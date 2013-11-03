@@ -16,8 +16,8 @@
 								?>
 								<?php echo CHtml::link(CHtml::encode($data->name), array('frontProduct/view', 'url'=>$data->url), array('class'=>'name')) ?>
                                 <span class="inf">
-                                    Артикул: <? echo $data->sku;?>
-                                    <? 
+                                    Артикул: <?=$data->sku;?>
+                                    <?php
                                     if($model->getEavAttributes())
                                     {
                                         $this->widget('application.modules.store.widgets.SAttributesTableRenderer', array(
