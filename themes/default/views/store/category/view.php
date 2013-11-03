@@ -76,14 +76,14 @@ $this->breadcrumbs[] = $this->model->name;
                                         <option value="2">Рейтингу 2</option>
                                     </select>
                                 </div>
-                                <?
+                                <?php
                                     $limits=array(Yii::app()->request->removeUrlParam('/store/category/view', 'per_page')  => $this->allowedPageLimit[0]);
                                     array_shift($this->allowedPageLimit);
                                     foreach($this->allowedPageLimit as $l)
                                         $limits[Yii::app()->request->addUrlParam('/store/category/view', array('per_page'=> $l))]=$l;
                                  ?>
                                 <p class="size">Показывать по:    
-                                <?
+                                <?php
                                      foreach($limits as $key => $val){
                                          echo '<a href="javascript:void(0);" onclick="foo(\''.$key.'\');">'.$val.'</a>';
                                      }
