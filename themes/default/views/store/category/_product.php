@@ -16,7 +16,7 @@
 								?>
 								<?php echo CHtml::link(CHtml::encode($data->name), array('frontProduct/view', 'url'=>$data->url), array('class'=>'name')) ?>
                                 <span class="inf">
-                                    Артикул: <?=$data->sku?>
+                                    Артикул: <? echo $data->sku;?>
                                     <? 
                                     if($model->getEavAttributes())
                                     {
