@@ -71,9 +71,12 @@ $this->breadcrumbs[] = $this->model->name;
                             <div class="line">
                                 <div class="sort">
                                     <label for="">Сортировать по: </label>
-                                    <select name="" id="" class="sm">
-                                        <option value="1">Рейтингу</option>
-                                        <option value="2">Рейтингу 2</option>
+                                    <select id="sorter" name="sorter" onchange="applyCategorySorter(this)" class="sm">
+                                        <option value="<?=Yii::app()->request->removeUrlParam('/store/category/view', 'sort')?>">---</option>
+                                        <option value="<?=Yii::app()->request->addUrlParam('/store/category/view', array('sort'=>'rating'))?>">Рейтингу</option>
+                                        <option value="<?=Yii::app()->request->addUrlParam('/store/category/view', array('sort'=>'rating.desc'))?>">Убыванию Рейтинга</option>                                        
+                                        <option value="<?=Yii::app()->request->addUrlParam('/store/category/view', array('sort'=>'price'))?>">Сначала Дешовые</option>
+                                        <option value="<?=Yii::app()->request->addUrlParam('/store/category/view', array('sort'=>'price.desc'))?>">Сначала Дорогие</option>
                                     </select>
                                 </div>
                                 <?php
@@ -92,6 +95,10 @@ $this->breadcrumbs[] = $this->model->name;
                                  function foo(url){
                                      window.location = url;
                                  }
+                                 function applyCategorySorter(el)
+{
+    window.location = $(el).val();
+}
                                  </script>
                                 <p class="items_num">Товаров: <span><?=$provider->totalItemCount?></span></p>
                                 <div class="clr"></div>

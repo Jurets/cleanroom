@@ -15,8 +15,7 @@
 								echo CHtml::link(CHtml::image($imgSource, $data->mainImageTitle, array('width'=>179,'height'=>176)), array('frontProduct/view', 'url'=>$data->url), array('class'=>'thumbnail'));
 								?>
 								<?php echo CHtml::link(CHtml::encode($data->name), array('frontProduct/view', 'url'=>$data->url), array('class'=>'name')) ?>
-                                <span class="inf">
-                                    Артикул: <?=$data->sku;?>
+                                <span class="inf">&nbsp;Артикул: <?=$data->sku;?>
                                     <?php
                                     if($model->getEavAttributes())
                                     {

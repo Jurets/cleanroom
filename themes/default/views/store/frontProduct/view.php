@@ -78,9 +78,22 @@ $this->widget('application.extensions.fancybox.EFancyBox', array(
                         <?php echo CHtml::form(array('/orders/cart/add'), 'post', array('class'=>'item_form')) ?>
                             <h1><?php echo CHtml::encode($model->name); ?></h1>
                             <p class="type"> (Уборочные тележки и инвентарь)</p>
-                            <p>Длина в разложенном состоянии: 170 см <br />Ширина: 70 см <br />Вес: 30 кг <br />Объем: min. 1,02 м3 <br />Высота: от 750 мм</p>
+                                    <?php
+                                    if($model->getEavAttributes())
+                                    {
+                                        $this->widget('application.modules.store.widgets.SAttributesTableRenderer', array(
+                                            'model'=>$model,
+//                                            'limitRows'=>2,
+                                            'separator'=>':  ',
+                                            'htmlOptions'=>array(
+                                                'class'=>'attributes'
+                                            ),
+                                        ));
+                                    }
+                                    ?>
+                                    </br>
                             <div class="colors">
-                                <p>Цвета:</p>
+                                <p style="margin-left: 3px;">Цвета:</p>
                                 <div class="line">
                                     <input type="button" style="background:#e0160c;" class="color" value=""/>
                                     <input type="button" style="background:#025bbb;" class="color" value=""/>
