@@ -47,14 +47,12 @@ class ManufacturerController extends Controller
      */
     protected function getManufacturerCategories($manufacturer_id, $limit)
     {
-        $sql = 'select *
-                from storecategory C 
-                where exists (  
+        $condition = 'exists (  
                 select * from StoreProduct P 
                 left join StoreProductCategoryRef R on R.product = P.id 
-                where R.category = C.id and P.manufacturer_id = :manufacturer_id)';
+                where R.category = t.id and P.manufacturer_id = :manufacturer_id)';
         return StoreCategory::model()
-            ->findAllBySql($sql, array(':manufacturer_id'=>$manufacturer_id));
+            ->findAll($condition, array(':manufacturer_id'=>$manufacturer_id));
             //->exists('select * from storeproduct P left join storeproductcategoryref R on R.product = P.id where R.category = C.id and P.manufacturer_id = :manufacturer_id', array(':manufacturer_id'=>$manufacturer_id))
             //->findAll(array('limit'=>$limit));
     }
