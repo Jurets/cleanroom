@@ -50,8 +50,8 @@ class ManufacturerController extends Controller
         $sql = 'select *
                 from storecategory C 
                 where exists (  
-                select * from storeproduct P 
-                left join storeproductcategoryref R on R.product = P.id 
+                select * from StoreProduct P 
+                left join StoreProductCategoryRef R on R.product = P.id 
                 where R.category = C.id and P.manufacturer_id = :manufacturer_id)';
         return StoreCategory::model()
             ->findAllBySql($sql, array(':manufacturer_id'=>$manufacturer_id));
