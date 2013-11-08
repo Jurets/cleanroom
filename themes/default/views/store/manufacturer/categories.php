@@ -7,7 +7,7 @@
  * @var $provider CActiveDataProvider
  * @var $categoryAttributes
  */
-DebugBreak();
+
 // Set meta tags
 $this->pageTitle = ($this->model->meta_title) ? $this->model->meta_title : $this->model->name;
 $this->pageKeywords = $this->model->meta_keywords;
