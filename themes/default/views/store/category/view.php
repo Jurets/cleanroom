@@ -49,18 +49,30 @@ $this->breadcrumbs[] = $this->model->name;
                             </ul>
                         </div>
 
-                        <form action="" class="filter">
+                        <!--<form action="" class="filter">-->
+                        <?php echo CHtml::form('', 'post', array('class'=>'filter')) ?>
                             <div class="line line2">
                                 <div class="key_word">
                                     <label for="">Ключевое слово</label>
-                                    <input type="text" value="" name="key_word"/>
+                                    <input type="text" value="" name="keyword"/>
                                 </div>
                                 <div class="range">
-                                    <label for="">Стоимость  от:</label>
+<!--                                    <label for="">Стоимость  от:</label>
                                     <input type="text" value="" name="min_price" />
                                     <label for="">до:</label>
-                                    <input type="text" value="" name="max_price"/>
-                                    <select class="sm" name="currency" id="">
+                                    <input type="text" value="" name="max_price"/>-->
+                                    <?php
+//                                            $this->widget('application.modules.store.widgets.filter.SFilterRenderer', array(
+//                                                'model'=>$this->model,
+//                                                'attributes'=>$this->eavAttributes,
+//                                                'view'=>'simplefilter'
+//                                            ));
+                                     ?>
+<label for="">Стоимость  от:</label>
+<?php echo CHtml::textField('minprice', (isset($_GET['minprice'])) ? (int)$this->getCurrentMinPrice():null ) ?>
+<label for="">до:</label>
+<?php echo CHtml::textField('maxprice', (isset($_GET['maxprice'])) ? (int)$this->getCurrentMaxPrice():null ) ?>
+                                    <select class="sm dontchangethis" name="currency" id="sdfsdafdsa">
                                         <option value="2">руб</option>
                                         <option value="1">usd</option>
                                     </select>
@@ -103,7 +115,8 @@ $this->breadcrumbs[] = $this->model->name;
                                 <p class="items_num">Товаров: <span><?=$provider->totalItemCount?></span></p>
                                 <div class="clr"></div>
                             </div>
-                        </form>
+                        <!--</form>-->
+                        <?php echo CHtml::endForm() ?>
 
 
 						<div class="item_list">
@@ -112,11 +125,29 @@ $this->breadcrumbs[] = $this->model->name;
 									$this->widget('zii.widgets.CListView', array(
 										'dataProvider'=>$provider,
 										'ajaxUpdate'=>false,
-										'template'=>'{items} {pager} {summary}',
+										'template'=>'{items} <div class="clear"></div> <div class="fl_c pager"><div class="fl_c1">{pager}</div></div>',
 										'itemView'=>$itemView,
 										'sortableAttributes'=>array(
 											'name', 'price'
 										),
+                                        'cssFile'=>false,
+                                        'pagerCssClass'=>'fl_c2',
+                                        'pager'=>array(
+                                            'previousPageCssClass'=>'prev-chisto',
+                                            'nextPageCssClass'=>'next-chisto',
+                                            'hiddenPageCssClass'=>'',
+                                            'internalPageCssClass'=>'pbtn-chisto',
+                                            'selectedPageCssClass'=>'active',
+                                            'firstPageCssClass'=>'hidden',
+                                            'lastPageCssClass'=>'hidden',
+                                            'nextPageLabel'=>'',
+                                            'prevPageLabel'=>'',
+                                            'header'=>'',
+                                            'htmlOptions'=>array(
+                                                'class'=>'',
+                                            )
+                                        )
+//                                        'pagerCssClass'=>'chistopager',
 									));
 								?>
 

@@ -56,7 +56,7 @@ $(document).ready(function() {
 	$('.spinner').spinner({min:0});
 /*end */
 
-	$('select').selectBox();
+	$('select').not('.dontchangethis').selectBox();
 
 /*----jcarousel----------*/
 	$('#jcarousel').jcarousel({

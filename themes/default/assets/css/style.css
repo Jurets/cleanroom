@@ -266,10 +266,17 @@ border-radius:4px 4px 0 0;behavior: url(js/pie.htc);}
 .pager .pbtn{display:block;padding:0 6px 0 5px;line-height:19px;height:19px;text-decoration:none;color:#424242;position:relative;
 border-radius:3px;behavior: url(js/pie.htc);}
 .pager .pbtn:hover , .pager .active .pbtn {color:#fff;background:#008fff;}
+.pager .pbtn-chisto a{display:block;padding:0 6px 0 5px;line-height:19px;height:19px;text-decoration:none;color:#424242;position:relative;
+border-radius:3px;behavior: url(js/pie.htc);}
+.pager .pbtn-chisto a:hover , .pager .active a {color:#fff;background:#008fff;}
 .pager .lbtn,
 .pager .rbtn{display:block;margin:1px 0 0;background:url(../images/pager_arws.png) 0 0 no-repeat;width:9px;height:15px;}
 .pager .lbtn{margin-right:6px;}
 .pager .rbtn{margin-left:7px;background-position:-9px 0;}
+.pager .prev-chisto a,
+.pager .next-chisto a{display:block;margin:1px 0 0;background:url(../images/pager_arws.png) 0 0 no-repeat;width:9px;height:15px;}
+.pager .prev-chisto a{margin-right:6px;}
+.pager .next-chisto a{margin-left:7px;background-position:-9px 0;}
 
 .btn{display:block;float:left;cursor:pointer;padding:0 20px;background:url(../images/btn_bg.png) 0 0 repeat-x;color:#fff;font-size:12px;height:22px !important;line-height:22px !important;text-transform:uppercase;
 font-family: 'Scada', sans-serif;position:relative;font-weight:normal;text-shadow:0 1px 1px #005dad;
@@ -333,3 +340,6 @@ border-radius:3px;behavior: url(js/pie.htc);}
 .copyrights{float:left;padding:12px 112px 16px 0;background:url(../images/ft_logo.png) right 0 no-repeat;}
 .web_dev{float:right;padding:12px 0 0;}
 
+.hidden{
+    display: none;
+}

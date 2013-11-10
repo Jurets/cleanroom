@@ -134,7 +134,8 @@ class CategoryController extends Controller
 		$this->currentQuery = clone $this->query->getDbCriteria();
 
 		// Filter products by price range if we have min_price or max_price in request
-		$this->applyPricesFilter();
+        $this->applyPricesFilter();
+		$this->applyChistoFilter();
 
 		$per_page = $this->allowedPageLimit[0];
 		if(isset($_GET['per_page']) && in_array((int)$_GET['per_page'], $this->allowedPageLimit))
@@ -263,12 +264,35 @@ class CategoryController extends Controller
 		return null;
 	}
 
-	public function applyPricesFilter()
-	{
-		$minPrice=Yii::app()->request->getQuery('min_price');
+    public function applyPricesFilter()
+    {
+//        DebugBreak();
+        $minPrice=Yii::app()->request->getQuery('min_price');
         $maxPrice=Yii::app()->request->getQuery('max_price');
         $currency=Yii::app()->request->getQuery('currency');
-		$word=Yii::app()->request->getQuery('key_word');
+        $word=Yii::app()->request->getQuery('key_word');
+        Yii::app()->currency->setActive($currency);
+        $cm=Yii::app()->currency;
+        if($cm->active->id!==$cm->main->id && ($minPrice>0||$maxPrice>0))
+        {
+            $minPrice=$cm->activeToMain($minPrice);
+            $maxPrice=$cm->activeToMain($maxPrice);
+        }
+        
+        if(isset($word) && !empty($word)) $this->query->applyKeyWord($word);
+
+        if($minPrice>0)
+            $this->query->applyMinPrice($minPrice);
+        if($maxPrice>0)
+            $this->query->applyMaxPrice($maxPrice);
+    }	
+    public function applyChistoFilter()
+	{
+//        DebugBreak();
+		$minPrice=Yii::app()->request->getPost('minprice');
+        $maxPrice=Yii::app()->request->getPost('maxprice');
+        $currency=Yii::app()->request->getPost('currency');
+		$word=Yii::app()->request->getPost('keyword');
         Yii::app()->currency->setActive($currency);
 		$cm=Yii::app()->currency;
 		if($cm->active->id!==$cm->main->id && ($minPrice>0||$maxPrice>0))
@@ -284,6 +308,36 @@ class CategoryController extends Controller
 		if($maxPrice>0)
 			$this->query->applyMaxPrice($maxPrice);
 	}
+    public $_currentMinPrice;
+    public $_currentMaxPrice;
+        public function getCurrentMinPrice()
+    {
+        if($this->_currentMinPrice!==null)
+            return $this->_currentMinPrice;
+
+        if(Yii::app()->request->getQuery('min_price'))
+            $this->_currentMinPrice=Yii::app()->request->getQuery('min_price');
+        else
+            $this->_currentMinPrice=Yii::app()->currency->convert($this->controller->getMinPrice());
+
+        return $this->_currentMinPrice;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getCurrentMaxPrice()
+    {
+        if($this->_currentMaxPrice!==null)
+            return $this->_currentMaxPrice;
+
+        if(Yii::app()->request->getQuery('max_price'))
+            $this->_currentMaxPrice=Yii::app()->request->getQuery('max_price');
+        else
+            $this->_currentMaxPrice=Yii::app()->currency->convert($this->controller->getMaxPrice());
+
+        return $this->_currentMaxPrice;
+    }
 
 	/**
 	 * Load category by url
