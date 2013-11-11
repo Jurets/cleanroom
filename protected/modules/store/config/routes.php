@@ -9,6 +9,7 @@ return array(
 	'store/ajax/activateCurrency/<id>'=>array('store/ajax/activateCurrency'),
 	'store/ajax/rateProduct/<id>'=>array('store/ajax/rateProduct'),
 	'store/index/renderProductsBlock/<scope>'=>array('store/index/renderProductsBlock'),
+    //array('store/category/view', 'pattern'=>'category/<manufacturer>/<url>/*'),
 	array('store/category/view', 'pattern'=>'category/<url>/*'),
 	'products/search/*'=>array('store/category/search'),
 	// Compare

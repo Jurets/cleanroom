@@ -42,7 +42,7 @@ $this->breadcrumbs[] = $this->model->name;
 
                 <?php
                     foreach($popular as $p)
-                        $this->renderPartial('_category', array('data'=>$p));
+                        $this->renderPartial('_category', array('manufacturer'=>$this->model, 'data'=>$p));
                 ?>
             <div class="clr"></div>
         </div>

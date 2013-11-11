@@ -40,13 +40,23 @@ $this->breadcrumbs[] = $this->model->name;
 									<?php echo $this->model->description ?>
 								</div>
 							<?php endif ?>
-                            <ul>
-                            	<li><a href="">Кабельные поломоечные машины (230 В)</a></li>
+                            <!--<ul>
+                                <li><a href="">Кабельные поломоечные машины (230 В)</a></li>
                                 <li><a href="">Аккумуляторные поломоечные машины</a></li>
                                 <li><a href="">Поломоечные машины с сиденьем для оператора</a></li>
                                 <li><a href="">Поломоечные машины колесничного типа с местом для оператора</a></li>
                                 <li><a href="">Поломоечные машины для чистки эскалаторов</a></li>
-                            </ul>
+                            </ul>-->
+
+                            <div class="item_list">
+
+                                    <?php //DebugBreak();
+                                        if (isset($category) && $category->children()->count() > 0)
+                                            foreach($category->children()->findAll() as $p)
+                                                $this->renderPartial('_category', array('manufacturer'=>$this->model, 'data'=>$p));
+                                    ?>
+                                <div class="clr"></div>
+                            </div>
                         </div>
 
                         <!--<form action="" class="filter">-->

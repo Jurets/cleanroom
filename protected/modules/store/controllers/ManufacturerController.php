@@ -53,7 +53,6 @@ class ManufacturerController extends Controller
                 where R.category = t.id and P.manufacturer_id = :manufacturer_id)';
         return StoreCategory::model()
             ->findAll($condition, array(':manufacturer_id'=>$manufacturer_id));
-            //->exists('select * from storeproduct P left join storeproductcategoryref R on R.product = P.id where R.category = C.id and P.manufacturer_id = :manufacturer_id', array(':manufacturer_id'=>$manufacturer_id))
             //->findAll(array('limit'=>$limit));
     }
     
