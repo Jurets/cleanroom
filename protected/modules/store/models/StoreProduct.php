@@ -271,10 +271,11 @@ class StoreProduct extends BaseModel
     
     public function applyKeyWord($value)
 	{
-		if($value)
-		{
+		if($value) {//DebugBreak();
 			$criteria = new CDbCriteria;
-			$criteria->addCondition('t.url LIKE "%'.$value.'%"');
+            //$criteria->addCondition('t.url LIKE "%'.$value.'%"');
+			$criteria->with = 'translate';
+            $criteria->addCondition('translate.name LIKE "%'.$value.'%"');
 			$this->getDbCriteria()->mergeWith($criteria);
 		}
 		return $this;
