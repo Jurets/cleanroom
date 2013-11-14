@@ -106,16 +106,25 @@ $this->widget('application.extensions.fancybox.EFancyBox', array(
                                 </div>
                             </div>
                             
-                            <p class="price">
-                                Цена: 
-                                <span><?php echo StoreProduct::formatPrice($model->toCurrentCurrency()); ?></span>
-                            </p>
-                            <div style="clear: both;font-size: 16px">
-                                <?php
-                                if($model->appliedDiscount)
-                                    echo '<span style="color:red; "><s>'.$model->toCurrentCurrency('originalPrice').' '.Yii::app()->currency->active->symbol.'</s></span>';
-                                ?>
-                            </div>
+                            <?php if ($model->price > 0) { ?>
+                                <p class="price">Цена: 
+                                    <span><?php echo StoreProduct::formatPrice($model->toCurrentCurrency()); ?></span>
+                                </p>
+                                <div style="clear: both;font-size: 16px">
+                                    <?php
+                                    if($model->appliedDiscount)
+                                        echo '<span style="color:red; "><s>'.$model->toCurrentCurrency('originalPrice').' '.Yii::app()->currency->active->symbol.'</s></span>';
+                                    ?>
+                                </div>
+                            <?php } else { ?>
+                                <span class="btn2" style="float: left;">
+                                    <span>
+                                        <a href="<?php echo Yii::app()->createAbsoluteUrl('feedback') ?>" style="text-decoration: none;">Запросить цену</a>
+                                    </span>
+                                </span>
+                                <!--<span style="overflow: hidden;"></span>-->
+                            <?php } ?>
+                            
                             
                             <div class="errors" id="productErrors"></div>
                             
@@ -155,15 +164,17 @@ $this->widget('application.extensions.fancybox.EFancyBox', array(
                             <div class="silver_clean silver_button">
                                 <button title="<?=Yii::t('core','В список желаний')?>" onclick="return addProductToWishList(<?php echo $model->id ?>);"><span class="icon heart"></span>Список желаний</button>
                             </div> -->
-                            
+                            <!--
                             <div class="line">
                                 <div class="spinner_box">
                                     <label for="">К-во:</label>
                                     <input type="text" value="1" class="spinner" />
                                 </div>
+                                
                                 <span class="btn2"><span><input type="button" value="В корзину" /></span></span>
+                                
                                 <div class="clr"></div>
-                            </div>
+                            </div>  -->
                         <?php echo CHtml::endForm(); ?>
                         
                     </div>
