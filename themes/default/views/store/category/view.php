@@ -64,7 +64,7 @@ $this->breadcrumbs[] = $this->model->name;
                             <div class="line line2">
                                 <div class="key_word">
                                     <label for="">Ключевое слово</label>
-                                    <input type="text" value="" name="keyword"/>
+                                    <input type="text" value="<?php echo $filterData['word'] ?>" name="keyword"/>
                                 </div>
                                 <div class="range">
 <!--                                    <label for="">Стоимость  от:</label>

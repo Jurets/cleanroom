@@ -135,7 +135,7 @@ class CategoryController extends Controller
 
 		// Filter products by price range if we have min_price or max_price in request
         $this->applyPricesFilter();
-		$this->applyChistoFilter();
+		$filterData = $this->applyChistoFilter();
 
 		$per_page = $this->allowedPageLimit[0];
 		if(isset($_GET['per_page']) && in_array((int)$_GET['per_page'], $this->allowedPageLimit))
@@ -155,7 +155,9 @@ class CategoryController extends Controller
         $this->layout = '//layouts/product';
 		$renderdata = array(
             'provider'=>$this->provider,
-            'itemView'=>(isset($_GET['view']) && $_GET['view']==='wide') ? '_product_wide' : '_product');
+            'itemView'=>(isset($_GET['view']) && $_GET['view']==='wide') ? '_product_wide' : '_product',
+            'filterData'=>$filterData,
+        );
         if ($data instanceof StoreCategory)
             $renderdata['category'] = $data;
         $this->render($view, $renderdata);
@@ -291,10 +293,12 @@ class CategoryController extends Controller
     public function applyChistoFilter()
 	{
 //        DebugBreak();
-		$minPrice=Yii::app()->request->getPost('minprice');
-        $maxPrice=Yii::app()->request->getPost('maxprice');
-        $currency=Yii::app()->request->getPost('currency');
-		$word=Yii::app()->request->getPost('keyword');
+        $filterArray = array();
+		$filterArray['minPrice'] = $minPrice=trim(Yii::app()->request->getPost('minprice'));
+        $filterArray['maxPrice'] = $maxPrice=trim(Yii::app()->request->getPost('maxprice'));
+        $filterArray['currency'] = $currency=trim(Yii::app()->request->getPost('currency'));
+		$filterArray['word'] = $word=trim(Yii::app()->request->getPost('keyword'));
+        
         Yii::app()->currency->setActive($currency);
 		$cm=Yii::app()->currency;
 		if($cm->active->id!==$cm->main->id && ($minPrice>0||$maxPrice>0))
@@ -309,10 +313,14 @@ class CategoryController extends Controller
 			$this->query->applyMinPrice($minPrice);
 		if($maxPrice>0)
 			$this->query->applyMaxPrice($maxPrice);
+        
+        return $filterArray;
 	}
+    
+        
     public $_currentMinPrice;
     public $_currentMaxPrice;
-        public function getCurrentMinPrice()
+    public function getCurrentMinPrice()
     {
         if($this->_currentMinPrice!==null)
             return $this->_currentMinPrice;
