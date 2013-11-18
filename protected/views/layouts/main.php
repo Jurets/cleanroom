@@ -86,7 +86,7 @@
 
             <div class="lc">
 
-              <h3 class="title2">Категории</h3>
+              <h3 class="title2">Производители</h3>
 
               <div class="brend_list">
 

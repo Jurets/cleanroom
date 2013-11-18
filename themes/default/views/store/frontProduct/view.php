@@ -4,7 +4,6 @@
  * @var StoreProduct $model
  * @var $this Controller
  */
-
 // Set meta tags
 $this->pageTitle = ($model->meta_title) ? $model->meta_title : $model->name;
 $this->pageKeywords = $model->meta_keywords;
@@ -77,7 +76,7 @@ $this->widget('application.extensions.fancybox.EFancyBox', array(
                       
                         <?php echo CHtml::form(array('/orders/cart/add'), 'post', array('class'=>'item_form')) ?>
                             <h1><?php echo CHtml::encode($model->name); ?></h1>
-                            <p class="type"> (Уборочные тележки и инвентарь)</p>
+                            <!--<p class="type"> (Уборочные тележки и инвентарь)</p>-->
                                     <?php
                                     if($model->getEavAttributes())
                                     {
@@ -86,13 +85,14 @@ $this->widget('application.extensions.fancybox.EFancyBox', array(
 //                                            'limitRows'=>2,
                                             'separator'=>':  ',
                                             'htmlOptions'=>array(
-                                                'class'=>'attributes'
+                                                'class'=>'attributes',
+                                                'style'=>'margin-top:20px;',
                                             ),
                                         ));
                                     }
                                     ?>
                                     </br>
-                            <div class="colors">
+<!--                            <div class="colors">
                                 <p style="margin-left: 3px;">Цвета:</p>
                                 <div class="line">
                                     <input type="button" style="background:#e0160c;" class="color" value=""/>
@@ -104,7 +104,7 @@ $this->widget('application.extensions.fancybox.EFancyBox', array(
                                     <input type="button" style="background:#dbdbdb;" class="color" value=""/>
                                     <div class="clr"></div>
                                 </div>
-                            </div>
+                            </div>-->
                             
                             <?php if ($model->price > 0) { ?>
                                 <p class="price">Цена: 
