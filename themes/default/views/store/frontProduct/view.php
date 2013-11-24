@@ -82,7 +82,7 @@ $this->widget('application.extensions.fancybox.EFancyBox', array(
                                     {
                                         $this->widget('application.modules.store.widgets.SAttributesTableRenderer', array(
                                             'model'=>$model,
-//                                            'limitRows'=>2,
+                                            'limitRows'=>3,
                                             'separator'=>':  ',
                                             'htmlOptions'=>array(
                                                 'class'=>'attributes',
