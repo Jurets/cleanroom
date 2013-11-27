@@ -62,6 +62,10 @@ return array(
 				'position'=>array(
 					'type'=>'text',
 				),
+
+                'is_kit'=>array(
+                    'type'=>'checkbox',     //jurets
+                ),
 			),
 		),
 	),

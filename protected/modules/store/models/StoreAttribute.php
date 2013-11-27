@@ -74,7 +74,7 @@ class StoreAttribute extends BaseModel
 			),
 			array('type, position', 'numerical', 'integerOnly'=>true),
 			array('name, title', 'length', 'max'=>255),
-			array('id, name, title, type', 'safe', 'on'=>'search'),
+			array('id, name, title, type, is_kit', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -99,7 +99,8 @@ class StoreAttribute extends BaseModel
 			'useInFilter'    => array('condition'=>$t.'.use_in_filter=1'),
 			'useInVariants'  => array('condition'=>$t.'.use_in_variants=1'),
 			'useInCompare'   => array('condition'=>$t.'.use_in_compare=1'),
-			'displayOnFront' => array('condition'=>$t.'.display_on_front=1'),
+            'displayOnFront' => array('condition'=>$t.'.display_on_front=1'),
+			'isKitMember'    => array('condition'=>$t.'.is_kit = 1'),  //Jurets
 		);
 	}
 
@@ -147,7 +148,8 @@ class StoreAttribute extends BaseModel
 			'use_in_variants'  => Yii::t('StoreModule.core', 'Использовать в вариантах'),
 			'use_in_compare'   => Yii::t('StoreModule.core', 'Использовать в сравнении'),
 			'select_many'      => Yii::t('StoreModule.core', 'Множественный выбор'),
-			'required'         => Yii::t('StoreModule.core', 'Обязательно к заполнению'),
+            'required'         => Yii::t('StoreModule.core', 'Обязательно к заполнению'),
+			'is_kit'           => Yii::t('StoreModule.core', 'Комплектация'),     //Jurets
 		);
 	}
 
