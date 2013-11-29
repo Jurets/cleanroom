@@ -8,6 +8,10 @@ return array(
 			'type'=>'form',
 			'title'=>Yii::t('StoreModule.admin', 'Параметры'),
 			'elements'=>array(
+                'is_kit'=>array(
+                    'type'=>'checkbox',
+                    'hint'=>Yii::t('main', 'Назначить атрибут комплектацией')
+                ),
 				'title'=>array(
 					'type'=>'text',
 				),
@@ -62,10 +66,6 @@ return array(
 				'position'=>array(
 					'type'=>'text',
 				),
-
-                'is_kit'=>array(
-                    'type'=>'checkbox',     //jurets
-                ),
 			),
 		),
 	),

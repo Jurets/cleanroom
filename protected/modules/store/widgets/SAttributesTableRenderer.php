@@ -20,6 +20,7 @@ class SAttributesTableRenderer extends CWidget
 	public $model;
     public $limitRows = 0;
     public $separator = '';
+    public $is_kit = 0;
 
 	/**
 	 * @var array table element attributes
@@ -42,6 +43,15 @@ class SAttributesTableRenderer extends CWidget
 	public function run()
 	{
 		$this->_attributes = $this->model->getEavAttributes();
+        
+        foreach($this->_attributes as $attrName => $val){
+            $modelAttr = StoreAttribute::model()->findByAttributes(array('name'=>$attrName));
+            if($this->is_kit){
+                if(!$modelAttr->is_kit) unset($this->_attributes[$attrName]);
+            } else {
+                if($modelAttr->is_kit) unset($this->_attributes[$attrName]);
+            }
+        }
 
 		$data = array();
 		foreach($this->getModels() as $model)

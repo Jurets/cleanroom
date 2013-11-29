@@ -199,6 +199,30 @@ $this->widget('application.extensions.fancybox.EFancyBox', array(
                         }
                     ?>
                     
+                    <?php
+                        $isShow = false;
+                        foreach($model->getEavAttributes() as $attrName => $val){
+                            $modelAttr = StoreAttribute::model()->findByAttributes(array('name'=>$attrName));
+                            if($modelAttr->is_kit) $isShow = true;
+                        }
+                        ?>
+                        
+                    <?php                             
+                        if($isShow)
+                        {
+                        ?>
+                            <h3><?php echo Yii::t('StoreModule.core', 'Комплектация'); ?></h3>
+                    <?php
+                               
+                            $this->widget('application.modules.store.widgets.SAttributesTableRenderer', array(
+                                'model'=>$model,
+                                'is_kit'=>1,
+                                'htmlOptions'=>array(
+                                    'class'=>'attributes'
+                                ),
+                            ));
+                        }                         
+                     ?>
                     <div class="item_list3">
                         <h3><?php echo Yii::t('StoreModule.core', 'С этим товаром обычно покупают'); ?>:</h3>
                         <?php if($model->relatedProductCount) {
