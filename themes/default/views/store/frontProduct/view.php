@@ -53,7 +53,7 @@ $this->widget('application.extensions.fancybox.EFancyBox', array(
                             <!--<img src="images/big_img01.jpg" width="336" height="317" alt="" />-->
                             <?php  // Main product image
                                 if($model->mainImage)
-                                    echo CHtml::link(CHtml::image($model->mainImage->getUrl('340x250', 'resize'), $model->mainImage->title), $model->mainImage->getUrl(), array('class'=>'thumbnail'));
+                                    echo CHtml::link(CHtml::image($model->mainImage->getUrl('336x317', 'resize'), $model->mainImage->title), $model->mainImage->getUrl(), array('class'=>'thumbnail'));
                                 else
                                     echo CHtml::link(CHtml::image('http://placehold.it/340x250'), '#', array('class'=>'thumbnail'));
                             ?>
