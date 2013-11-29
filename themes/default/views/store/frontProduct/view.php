@@ -14,31 +14,17 @@ Yii::app()->clientScript->registerScriptFile($this->module->assetsUrl.'/product.
 Yii::app()->clientScript->registerScriptFile($this->module->assetsUrl.'/product.view.configurations.js', CClientScript::POS_END);
 
 // Create breadcrumbs
-/*if($model->mainCategory)
+if($model->mainCategory)
 {
-    //$ancestors = $model->mainCategory->excludeRoot()->ancestors()->findAll();
-	$ancestors = $model->mainCategory->ancestors()->findAll();
+    $ancestors = $model->mainCategory->excludeRoot()->ancestors()->findAll();
 
-	foreach($ancestors as $c)
-		$this->breadcrumbs[$c->name] = $c->getViewUrl();
+    foreach($ancestors as $c)
+        $this->breadcrumbs[$c->name] = $c->getViewUrl();
 
-	// Do not add root category to breadcrumbs
-	//if ($model->mainCategory->id != 1)
-		$this->breadcrumbs[$model->mainCategory->name] = $model->mainCategory->getViewUrl();
-        
-}*/
-    //DebugBreak();
-    $count = Yii::app()->db
-        ->createCommand('select count(*) from StoreProductCategoryRef where product = :product and is_main = 1')
-        ->queryScalar(array(':product'=>$model->id));
-        
-    $this->breadcrumbs[$model->mainCategory->name] = $model->mainCategory->getViewUrl();
-    $this->breadcrumbs[] = 'Число главных = '.$count;
-        
-    /*$this->breadcrumbs=array(
-        'Число главных = '.$count,//=>array('index'),
-    );*/
-
+    // Do not add root category to breadcrumbs
+    if ($model->mainCategory->id != 1)
+        $this->breadcrumbs[$model->mainCategory->name] = $model->mainCategory->getViewUrl();
+}
 
 // Fancybox ext
 $this->widget('application.extensions.fancybox.EFancyBox', array(
