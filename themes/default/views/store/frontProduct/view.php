@@ -32,6 +32,11 @@ $this->widget('application.extensions.fancybox.EFancyBox', array(
 ));
 
 ?>
+<style type="text/css">
+    table.attributes > tbody > tr > td:nth-child(2) {
+        width: 6px;
+    }
+</style>
 
     <div class="breadcrumbs">
         <?php
@@ -285,3 +290,4 @@ $this->widget('application.extensions.fancybox.EFancyBox', array(
     </div>    
         
 </div>
+
