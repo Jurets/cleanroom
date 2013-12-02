@@ -108,10 +108,10 @@ $this->widget('application.extensions.fancybox.EFancyBox', array(
                             
                             <?php if ($model->price > 0) { ?>
                                 <p class="price">Цена: 
-                                    <span><?php echo StoreProduct::formatPrice($model->toCurrentCurrency()); ?></span>
+                                    <span><?php echo StoreProduct::formatPrice($model->toCurrentCurrency()).' '.Yii::app()->currency->active->symbol; ?></span>
                                 </p>
                                 <div style="clear: both;font-size: 16px">
-                                    <?php
+                                    <?php 
                                     if($model->appliedDiscount)
                                         echo '<span style="color:red; "><s>'.$model->toCurrentCurrency('originalPrice').' '.Yii::app()->currency->active->symbol.'</s></span>';
                                     ?>
