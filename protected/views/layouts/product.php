@@ -91,9 +91,8 @@
 
             <?php
                 Yii::import('application.modules.store.models.StoreCategory');
-                $items = StoreCategory::model()->findByPk(1)->asCMenuArray();
-                if(isset($items['items']))
-                {
+                $items = StoreCategory::model()->findByPk(1)->asCMenuArray('4');
+                if(isset($items['items'])) {
                     $this->widget('application.extensions.mbmenu.MbMenu',array(
                         'cssFile'=>Yii::app()->theme->baseUrl.'/assets/css/menu.css',
 //                        'htmlOptions'=>array('id'=>'side_menu'),
