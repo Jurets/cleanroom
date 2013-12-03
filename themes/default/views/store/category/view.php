@@ -40,21 +40,27 @@ $this->breadcrumbs[] = $this->model->name;
 									<?php echo $this->model->description ?>
 								</div>
 							<?php endif ?>
-                            <!--<ul>
-                                <li><a href="">Кабельные поломоечные машины (230 В)</a></li>
-                                <li><a href="">Аккумуляторные поломоечные машины</a></li>
-                                <li><a href="">Поломоечные машины с сиденьем для оператора</a></li>
-                                <li><a href="">Поломоечные машины колесничного типа с местом для оператора</a></li>
-                                <li><a href="">Поломоечные машины для чистки эскалаторов</a></li>
-                            </ul>-->
 
                             <div class="item_list">
-
-                                    <?php //DebugBreak();
-                                        if (isset($category) && $category->children()->count() > 0)
-                                            foreach($category->children()->findAll() as $p)
-                                                $this->renderPartial('_category', array('manufacturer'=>$this->model, 'data'=>$p));
-                                    ?>
+                                <?php 
+                                    if (isset($category) && $category->children()->count() > 0) { 
+                                        if ($category->level == 2) {
+                                            //$this->renderPartial('_category', array('manufacturer'=>$this->model, 'data'=>$data));
+                                            foreach($category->children()->findAll() as $data) { ?>
+                                                <a class="item" href="category/view/<?php echo $data->url ?>" style="width: 202px;" alt="">
+                                                    <img src="/uploads/category/<?php echo $data->url ?>.jpg" width="202" height="200" alt="" />
+                                                        <span><?php echo CHtml::encode($data->name) ?></span>
+                                                </a>
+                                        <?php } 
+                                            } else { ?>
+                                        <ul>
+                                            <?php foreach($category->children()->findAll() as $data) { ?>
+                                                <li>
+                                                    <a href="<?php echo $data->url ?>"><?php echo CHtml::encode($data->name) ?></a>
+                                                </li>
+                                            <?php } ?>
+                                        </ul>    
+                                    <?php } } ?>
                                 <div class="clr"></div>
                             </div>
                         </div>
@@ -67,21 +73,10 @@ $this->breadcrumbs[] = $this->model->name;
                                     <input type="text" value="<?php echo $filterData['word'] ?>" name="keyword"/>
                                 </div>
                                 <div class="range">
-<!--                                    <label for="">Стоимость  от:</label>
-                                    <input type="text" value="" name="min_price" />
+                                    <label for="">Стоимость  от:</label>
+                                    <?php echo CHtml::textField('minprice', (isset($_GET['minprice'])) ? (int)$this->getCurrentMinPrice():null ) ?>
                                     <label for="">до:</label>
-                                    <input type="text" value="" name="max_price"/>-->
-                                    <?php
-//                                            $this->widget('application.modules.store.widgets.filter.SFilterRenderer', array(
-//                                                'model'=>$this->model,
-//                                                'attributes'=>$this->eavAttributes,
-//                                                'view'=>'simplefilter'
-//                                            ));
-                                     ?>
-<label for="">Стоимость  от:</label>
-<?php echo CHtml::textField('minprice', (isset($_GET['minprice'])) ? (int)$this->getCurrentMinPrice():null ) ?>
-<label for="">до:</label>
-<?php echo CHtml::textField('maxprice', (isset($_GET['maxprice'])) ? (int)$this->getCurrentMaxPrice():null ) ?>
+                                    <?php echo CHtml::textField('maxprice', (isset($_GET['maxprice'])) ? (int)$this->getCurrentMaxPrice():null ) ?>
                                     <select class="sm dontchangethis" name="currency" id="sdfsdafdsa">
                                         <option value="2">руб</option>
                                         <option value="1">usd</option>
@@ -117,10 +112,9 @@ $this->breadcrumbs[] = $this->model->name;
                                  function foo(url){
                                      window.location = url;
                                  }
-                                 function applyCategorySorter(el)
-{
-    window.location = $(el).val();
-}
+                                 function applyCategorySorter(el) {
+                                     window.location = $(el).val();
+                                 }
                                  </script>
                                 <p class="items_num">Товаров: <span><?=$provider->totalItemCount?></span></p>
                                 <div class="clr"></div>
