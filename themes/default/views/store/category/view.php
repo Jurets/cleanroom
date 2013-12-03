@@ -87,13 +87,13 @@ $this->breadcrumbs[] = $this->model->name;
                             </div>
                             <div class="line">
                                 <div class="sort">
-                                    <label for="">Сортировать по: </label>
+                                    <label for="">Сортировка: </label>
                                     <select id="sorter" name="sorter" onchange="applyCategorySorter(this)" class="sm">
                                         <option value="<?=Yii::app()->request->removeUrlParam('/store/category/view', 'sort')?>">---</option>
-                                        <option value="<?=Yii::app()->request->addUrlParam('/store/category/view', array('sort'=>'rating'))?>">Рейтингу</option>
-                                        <option value="<?=Yii::app()->request->addUrlParam('/store/category/view', array('sort'=>'rating.desc'))?>">Убыванию Рейтинга</option>                                        
-                                        <option value="<?=Yii::app()->request->addUrlParam('/store/category/view', array('sort'=>'price'))?>">Сначала Дешовые</option>
-                                        <option value="<?=Yii::app()->request->addUrlParam('/store/category/view', array('sort'=>'price.desc'))?>">Сначала Дорогие</option>
+                                        <option value="<?=Yii::app()->request->addUrlParam('/store/category/view', array('sort'=>'rating'))?>">по рейтингу</option>
+                                        <!--<option value="<?=Yii::app()->request->addUrlParam('/store/category/view', array('sort'=>'rating.desc'))?>">Убыванию Рейтинга</option>-->
+                                        <option value="<?=Yii::app()->request->addUrlParam('/store/category/view', array('sort'=>'price'))?>">дешевые </option>
+                                        <option value="<?=Yii::app()->request->addUrlParam('/store/category/view', array('sort'=>'price.desc'))?>">дорогие </option>
                                     </select>
                                 </div>
                                 <?php
