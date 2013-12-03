@@ -24,9 +24,9 @@ class SAsCMenuArrayBehavior extends CActiveRecordBehavior
 	 */
 	public $urlExpression;
 
-	public function asCMenuArray()
+	public function asCMenuArray($level = '3')
 	{
-		return $this->walkArray($this->owner);
+		return $this->walkArray($this->owner, $level);
 	}
 
 	/**
@@ -34,7 +34,7 @@ class SAsCMenuArrayBehavior extends CActiveRecordBehavior
 	 * @param $model CActiveRecord model with NestedSet behavior
 	 * @return array
 	 */
-	protected function walkArray($model)
+	protected function walkArray($model, $level = '3')
 	{
 		$data = array(
 			'label'=>$model->{$this->labelAttr},
@@ -42,7 +42,7 @@ class SAsCMenuArrayBehavior extends CActiveRecordBehavior
 		);
 
 		// TODO: Cache result
-		$children = $model->children()->findAll();
+		$children = $model->children()->getLevelStructure($level)->findAll();
 		if(!empty($children))
 		{
 			foreach($children as $c)

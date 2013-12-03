@@ -126,6 +126,18 @@ class StoreCategory extends BaseModel
 		));
 		return $this;
 	}
+    
+    /**
+     * возвращает все категории не выше заданного уровня (подструктуру)
+     * @return StoreCategory
+     */
+    public function getLevelStructure($level = '2', $alias = 't')
+    {
+        $this->getDbCriteria()->mergeWith(array(
+            'condition'=>'level <= '.$level,
+        ));
+        return $this;
+    }
 
 	/**
 	 * @return StoreCategory

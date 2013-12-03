@@ -51,7 +51,8 @@
             </div>
 
             <div class="hd_pad1">
-            	<p class="tel">8 800 795-62-90<br />8 800 795-62-90</p>
+                <!--<p class="tel">8 800 795-62-90<br />8 800 795-62-90</p>-->
+            	<p class="tel">+7 (926) 336-08-12<br><br></p>
                 <p class="worktime">Работаем с 9:00  до 21:00  без выходных</p>
             </div>
 
@@ -60,10 +61,14 @@
 				$this->widget('zii.widgets.CMenu2', array(
 					'items'=>array(
                         array('label'=>Yii::t('core', 'Главная'), 'url'=>Yii::app()->createAbsoluteUrl()),
-						array('label'=>Yii::t('core', 'Помощь'), 'url'=>array('/pages/pages/view', 'url'=>'help'),),
+						/*array('label'=>Yii::t('core', 'Помощь'), 'url'=>array('/pages/pages/view', 'url'=>'help'),),
 						array('label'=>Yii::t('core', 'Как сделать заказ'), 'url'=>array('/pages/pages/view', 'url'=>'how-to-create-order')),
 						array('label'=>Yii::t('core', 'Гарантия'), 'url'=>array('/pages/pages/view', 'url'=>'garantiya')),
-						array('label'=>Yii::t('core', 'Доставка и оплата'), 'url'=>array('/pages/pages/view', 'url'=>'dostavka-i-oplata')),
+						array('label'=>Yii::t('core', 'Доставка и оплата'), 'url'=>array('/pages/pages/view', 'url'=>'dostavka-i-oplata')),*/
+                        array('label'=>Yii::t('core', 'О компании'), 'url'=>array('/pages/pages/view', 'url'=>'about')),
+                        array('label'=>Yii::t('core', 'Сервис'), 'url'=>array('/pages/pages/view', 'url'=>'service')),
+                        array('label'=>Yii::t('core', 'Оплата и доставка'), 'url'=>array('/pages/pages/view', 'url'=>'dostavka-i-oplata')),
+                        array('label'=>Yii::t('core', 'Контакты'), 'url'=>array('/pages/pages/view', 'url'=>'contacts')),
 					),
 				));
 			?>
@@ -89,9 +94,8 @@
 
             <?php
                 Yii::import('application.modules.store.models.StoreCategory');
-                $items = StoreCategory::model()->findByPk(1)->asCMenuArray();
-                if(isset($items['items']))
-                {
+                $items = StoreCategory::model()->findByPk(1)->asCMenuArray('4');
+                if(isset($items['items'])) {
                     $this->widget('application.extensions.mbmenu.MbMenu',array(
                         'cssFile'=>Yii::app()->theme->baseUrl.'/assets/css/menu.css',
 //                        'htmlOptions'=>array('id'=>'side_menu'),
