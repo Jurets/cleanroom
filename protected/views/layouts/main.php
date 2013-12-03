@@ -36,15 +36,13 @@
     	<div class="wrap">
             <a class="logo" href="/"><img src="/themes/default/assets/images/logo.png" width="171" height="86" /></a>
 
-            <form class="search">
-
-				<?php echo CHtml::form($this->createUrl('/store/category/search')) ?>
-					<input type="text" value="Поиск товаров" name="q" id="searchQuery">
-					<input type="submit" value="">
-				<?php echo CHtml::endForm() ?>
-
+            <?php echo CHtml::form($this->createUrl('/store/category/search'), 'post', array('class'=>'search')) ?>
+                <!--<input type="text" value="" name="q" id="searchQuery">-->
+                <?php echo CHtml::textField('q', '', array('placeholder'=>'Поиск товаров', 'id'=>"searchQuery")) ?>
+                <!--<button type="submit">Поиск</button>-->
+                <input type="submit" value="">
                 <div class="clear"></div>
-            </form>
+            <?php echo CHtml::endForm() ?>
 
             <div class="slogan">
             	<div class="slogan1"><div class="lbg"></div><div class="rbg"></div><p><strong>Чисто</strong>та в <strong>пром</strong>ышленных масштабах!</p></div>
