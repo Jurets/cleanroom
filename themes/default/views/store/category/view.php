@@ -47,7 +47,7 @@ $this->breadcrumbs[] = $this->model->name;
                                         if ($category->level == 2) {
                                             //$this->renderPartial('_category', array('manufacturer'=>$this->model, 'data'=>$data));
                                             foreach($category->children()->findAll() as $data) { ?>
-                                                <a class="item" href="category/view/<?php echo $data->url ?>" style="width: 202px;" alt="">
+                                                <a class="item" href="<?php echo $data->url ?>" style="width: 202px;" alt="">
                                                     <img src="/uploads/category/<?php echo $data->url ?>.jpg" width="202" height="200" alt="" />
                                                         <span><?php echo CHtml::encode($data->name) ?></span>
                                                 </a>
