@@ -54,8 +54,10 @@ $this->breadcrumbs[] = $this->model->name;
                                         <?php } 
                                             } else { ?>
                                         <ul>
-                                            <?php foreach($category->children()->findAll() as $data) { ?>
-                                                <li>
+                                            <?php //foreach($category->children()->findAll() as $data) { ?>
+                                            <?php foreach($category->descendants()->findAll() as $data) {
+                                                $margin = ($data->level - 3) * 15; //вычислить отступ по уровню ?>
+                                                <li style="margin-left: <?php echo $margin; ?>px">
                                                     <a href="<?php echo $data->url ?>"><?php echo CHtml::encode($data->name) ?></a>
                                                 </li>
                                             <?php } ?>
