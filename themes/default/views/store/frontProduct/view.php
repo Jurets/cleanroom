@@ -34,7 +34,7 @@ $this->widget('application.extensions.fancybox.EFancyBox', array(
 ?>
 <style type="text/css">
     table.attributes > tbody > tr > td:nth-child(2) {
-        width: 100px;
+        width: 2px;
     }
 </style>
 

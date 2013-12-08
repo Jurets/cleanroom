@@ -100,7 +100,7 @@ border-radius:3px;behavior: url(js/pie.htc);}
 .breadcrumbs{margin:5px 0 27px;}
 .breadcrumbs > div{display:inline;padding:0 5px;border-left:1px solid #205076;line-height:12px;}
 .breadcrumbs > div:first-child{border:none;padding-left:0;}
-.breadcrumbs a{text-decoration:underline;color:#205076;font-size:11px;}
+.breadcrumbs a{text-decoration:underline;color:#205076;font-size:12px;}
 .breadcrumbs a:hover,
 .breadcrumbs .active a{text-decoration:underline;color:#fc7317;}
 .breadcrumbs .active{border-color:#fc7317;}
@@ -222,7 +222,8 @@ border-radius:4px 4px 0 0;behavior: url(js/pie.htc);}
 .item_inf table{width:100%;border-collapse:collapse;margin:18px 0 22px;border:1px solid #f2f2f2;}
 .item_inf table td{padding:5px 12px;font-size:11px;}
 .item_inf table td:first-child{font-size:12px;color:#013761;}
-.item_inf table .even td{background:#fbfbfb;}
+/*.item_inf table .even td{background:#fbfbfb;}*/
+.item_inf table .even td{background: #D7FFFF; /*#C4FFFF;*/}
 
 .item_list3{padding:0 6px 0 10px;margin:0 0 30px;}
 .item_list3 h3{margin:0 0 22px;}
