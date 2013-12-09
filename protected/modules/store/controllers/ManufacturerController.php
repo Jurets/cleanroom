@@ -52,7 +52,7 @@ class ManufacturerController extends Controller
                 left join StoreProductCategoryRef R on R.product = P.id 
                 where R.category = t.id and P.manufacturer_id = :manufacturer_id)';
         return StoreCategory::model()
-            ->getByLevel()
+            ->getByLevel(3)
             ->findAll($condition, array(':manufacturer_id'=>$manufacturer_id));
             //->findAll(array('limit'=>$limit));
     }
