@@ -55,9 +55,11 @@
             </div>
 
             <div class="hd_pad1">
-                <!--<p class="tel">8 800 795-62-90<br />8 800 795-62-90</p>-->
-                <!--<p class="tel">+7 (926) 336-08-12<br><br></p>-->
+                <p class="tel">
+                <!--8 800 795-62-90<br />8 800 795-62-90</p>
+                <p class="tel">+7 (926) 336-08-12<br><br>-->
                 <?php echo Yii::app()->db->createCommand("SELECT `value` FROM `systemsettings` WHERE `key` = 'editorTelephone'")->queryScalar(); ?>
+                </p>
                 <p class="worktime">Работаем с 9:00  до 21:00  без выходных</p>
             </div>
 
