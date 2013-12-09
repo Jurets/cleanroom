@@ -42,8 +42,10 @@ return array(
 						'maxi'     => Yii::t('CoreModule.admin', 'Максимальная')
 					)
 				),
-				'core_editorHeight'=>array('type'=>'text'),
-				'core_editorAutoload'=>array('type'=>'checkbox'),
+				'core_editorHeight'     =>  array('type'=>'text'),
+                'core_editorAutoload'   =>  array('type'=>'checkbox'),
+                'core_editorPartners'   =>  array('type'=>'SRichTextarea'),
+				'core_editorTelephone'  =>  array('type'=>'SRichTextarea'),
 			)
 		),
 		'images'=>array(

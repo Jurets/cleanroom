@@ -28,7 +28,9 @@ class SystemSettingsForm extends CFormModel
 	 */
 	public $core_editorTheme;
 	public $core_editorHeight;
-	public $core_editorAutoload;
+    public $core_editorAutoload;
+    public $core_editorTelephone;
+	public $core_editorPartners;
 
 	/**
 	 * Image settings
@@ -71,7 +73,7 @@ class SystemSettingsForm extends CFormModel
 	public function rules()
 	{
 		return array(
-			array('core_siteName, core_productsPerPage, core_productsPerPageAdmin, core_theme, core_editorTheme, core_editorHeight, core_editorAutoload', 'required'),
+			array('core_siteName, core_productsPerPage, core_productsPerPageAdmin, core_theme, core_editorTheme, core_editorHeight, core_editorAutoload, core_editorPartners, core_editorTelephone', 'required'),
 			array('images_path, images_thumbPath, images_url, images_thumbUrl, images_maxFileSize, images_maximum_image_size', 'required'),
 			array('images_watermark_image', 'validateWatermarkFile'),
 			array('images_watermark_active', 'boolean'),
@@ -94,7 +96,9 @@ class SystemSettingsForm extends CFormModel
 			// Editor
 			'core_editorTheme'          => Yii::t('CoreModule.admin', 'Тема'),
 			'core_editorHeight'         => Yii::t('CoreModule.admin', 'Высота'),
-			'core_editorAutoload'       => Yii::t('CoreModule.admin', 'Автоматическая активация'),
+            'core_editorAutoload'       => Yii::t('CoreModule.admin', 'Автоматическая активация'),
+            'core_editorTelephone'      => Yii::t('CoreModule.admin', 'Контактный телефон'),
+			'core_editorPartners'       => Yii::t('CoreModule.admin', 'Ссылки партнеров'),
 			// Images
 			'images_path'               => Yii::t('CoreModule.admin', 'Путь сохранения'),
 			'images_thumbPath'          => Yii::t('CoreModule.admin', 'Путь к превью'),

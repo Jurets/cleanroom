@@ -56,7 +56,8 @@
 
             <div class="hd_pad1">
                 <!--<p class="tel">8 800 795-62-90<br />8 800 795-62-90</p>-->
-            	<p class="tel">+7 (926) 336-08-12<br><br></p>
+                <!--<p class="tel">+7 (926) 336-08-12<br><br></p>-->
+                <?php echo Yii::app()->db->createCommand("SELECT `value` FROM `systemsettings` WHERE `key` = 'editorTelephone'")->queryScalar(); ?>
                 <p class="worktime">Работаем с 9:00  до 21:00  без выходных</p>
             </div>
 
@@ -125,7 +126,10 @@
     	<div class="wrap">
 
             <p class="copyrights">© 2013</p>
-            <p class="web_dev">Партнеры: <a href="">website.com</a>  <a href="">website.com</a>  <a href="">website.com</a>  </p>
+            <p class="web_dev">Партнеры: 
+                <!--<a href="">website.com</a>  <a href="">website.com</a>  <a href="">website.com</a>  -->
+                <?php echo Yii::app()->db->createCommand("SELECT `value` FROM `systemsettings` WHERE `key` = 'editorPartners'")->queryScalar(); ?>
+            </p>
             <div class="clr"></div>
         </div>
     </div>
