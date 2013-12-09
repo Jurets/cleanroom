@@ -26,7 +26,11 @@
 	<script type="text/javascript" src="<?php echo Yii::app()->theme->baseUrl ?>/assets/js/jquery.jcarousel.min.js"></script>
 
 	<script type="text/javascript" src="<?php echo Yii::app()->theme->baseUrl ?>/assets/js/site.js"></script>
+
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
 </head>
+
 <body>
 
 <div class="wrapper">
@@ -84,8 +88,13 @@
 
             <div class="slider_wr">
             	<ul id="slider">
-                	<li><img src="/themes/default/assets/images/slide01.jpg" width="960" height="323" alt="" /></li>
-                    <li><img src="/themes/default/assets/images/slide02.jpg" width="960" height="323" alt="" /></li>
+                	<!--<li><img src="/themes/default/assets/images/slide01.jpg" width="960" height="323" alt="" /></li>
+                    <li><img src="/themes/default/assets/images/slide02.jpg" width="960" height="323" alt="" /></li>-->
+                    <li><img src="/uploads/slider01.jpg" width="960" height="323" alt="" /></li>
+                    <li><img src="/uploads/slider02.jpg" width="960" height="323" alt="" /></li>
+                    <li><img src="/uploads/slider03.jpg" width="960" height="323" alt="" /></li>
+                    <li><img src="/uploads/slider04.jpg" width="960" height="323" alt="" /></li>
+                    <li><img src="/uploads/slider05.jpg" width="960" height="323" alt="" /></li>
                 </ul>
             </div>
 

@@ -31,7 +31,11 @@
 	<script type="text/javascript" src="<?php  echo Yii::app()->theme->baseUrl ?>/assets/js/jquery.jcarousel.min.js"></script>
 
 	<script type="text/javascript" src="<?php echo Yii::app()->theme->baseUrl ?>/assets/js/site.js"></script>
+
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
 </head>
+
 <body>
 
 <div class="wrapper">
