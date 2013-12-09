@@ -27,14 +27,14 @@ if($model->mainCategory)
 }
 
 // Fancybox ext
-$this->widget('application.extensions.fancybox.EFancyBox', array(
+/*$this->widget('application.extensions.fancybox.EFancyBox', array(
 	'target'=>'a.thumbnail',
-));
+));*/
 
 ?>
 <style type="text/css">
     table.attributes > tbody > tr > td:nth-child(2) {
-        width: 100px;
+        width: 2px;
     }
 </style>
 
@@ -54,17 +54,15 @@ $this->widget('application.extensions.fancybox.EFancyBox', array(
             <div class="item_det">
                 <div class="top_pad">
                     <div class="fll">
-                        <a href="" class="big_img">
-                            <!--<img src="images/big_img01.jpg" width="336" height="317" alt="" />-->
-                            <?php  // Main product image
-                                if($model->mainImage)
-                                    echo CHtml::link(CHtml::image($model->mainImage->getUrl('336x317', 'resize'), $model->mainImage->title), $model->mainImage->getUrl(), array('class'=>'thumbnail'));
-                                else
-                                    echo CHtml::link(CHtml::image('http://placehold.it/340x250'), '#', array('class'=>'thumbnail'));
-                            ?>
-                        </a>
+                        <?php  // Main product image
+                            if($model->mainImage)
+                                echo CHtml::link(CHtml::image($model->mainImage->getUrl('336x317', 'resize'), $model->mainImage->title), $model->mainImage->getUrl(), array('class'=>'thumbnail'));
+                            else
+                                echo CHtml::link(CHtml::image('http://placehold.it/340x250'), '#', array('class'=>'thumbnail'));
+                        ?>
                         <div class="sm_imgs jcarousel-skin-default">
                             <div class="jcarousel " id="jcarousel">
+                                <ul>
                                 <?php // Display additional images
                                     foreach($model->imagesNoMain as $image) {
                                         echo CHtml::openTag('li', array('class'=>'span2'));
@@ -72,6 +70,7 @@ $this->widget('application.extensions.fancybox.EFancyBox', array(
                                         echo CHtml::closeTag('li');
                                     }
                                 ?>
+                                </ul>
                             </div>
                             <a class="car_btn lbtn" href="#" onclick="$('#jcarousel').jcarousel('scroll', '-=1'); return false;"></a>
                             <a class="car_btn rbtn" href="#" onclick="$('#jcarousel').jcarousel('scroll', '+=1'); return false;"></a>
@@ -81,7 +80,6 @@ $this->widget('application.extensions.fancybox.EFancyBox', array(
                       
                         <?php echo CHtml::form(array('/orders/cart/add'), 'post', array('class'=>'item_form')) ?>
                             <h1><?php echo CHtml::encode($model->name); ?></h1>
-                            <!--<p class="type"> (Уборочные тележки и инвентарь)</p>-->
                                     <?php
                                     if($model->getEavAttributes())
                                     {

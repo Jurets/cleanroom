@@ -54,8 +54,10 @@ $this->breadcrumbs[] = $this->model->name;
                                         <?php } 
                                             } else { ?>
                                         <ul>
-                                            <?php foreach($category->children()->findAll() as $data) { ?>
-                                                <li>
+                                            <?php //foreach($category->children()->findAll() as $data) { ?>
+                                            <?php foreach($category->descendants()->findAll() as $data) {
+                                                $margin = ($data->level - 3) * 15; //вычислить отступ по уровню ?>
+                                                <li style="margin-left: <?php echo $margin; ?>px">
                                                     <a href="<?php echo $data->url ?>"><?php echo CHtml::encode($data->name) ?></a>
                                                 </li>
                                             <?php } ?>
@@ -92,8 +94,8 @@ $this->breadcrumbs[] = $this->model->name;
                                         <option value="<?=Yii::app()->request->removeUrlParam('/store/category/view', 'sort')?>">---</option>
                                         <option value="<?=Yii::app()->request->addUrlParam('/store/category/view', array('sort'=>'rating'))?>">по рейтингу</option>
                                         <!--<option value="<?=Yii::app()->request->addUrlParam('/store/category/view', array('sort'=>'rating.desc'))?>">Убыванию Рейтинга</option>-->
-                                        <option value="<?=Yii::app()->request->addUrlParam('/store/category/view', array('sort'=>'price'))?>">дешевые </option>
-                                        <option value="<?=Yii::app()->request->addUrlParam('/store/category/view', array('sort'=>'price.desc'))?>">дорогие </option>
+                                        <option value="<?=Yii::app()->request->addUrlParam('/store/category/view', array('sort'=>'price'))?>">по цене ↑</option>
+                                        <option value="<?=Yii::app()->request->addUrlParam('/store/category/view', array('sort'=>'price.desc'))?>">по цене ↓</option>
                                     </select>
                                 </div>
                                 <?php
