@@ -2,6 +2,10 @@
 
 	Yii::import('application.modules.store.components.SCompareProducts');
 	Yii::import('application.modules.store.models.wishlist.StoreWishlist');
+    
+    $assetsManager = Yii::app()->clientScript;
+    $assetsManager->registerCoreScript('jquery');
+    $assetsManager->registerCoreScript('jquery.ui');
 
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -20,11 +24,11 @@
     <link href="<?php echo Yii::app()->theme->baseUrl ?>/assets/css/style.css" rel="stylesheet" type="text/css" />
 	<link href="<?php echo Yii::app()->theme->baseUrl ?>/assets/css/product.css" rel="stylesheet" type="text/css" />
 
-	<script type="text/javascript" src="<?php echo Yii::app()->theme->baseUrl ?>/assets/js/jquery-1.9.0.min.js"></script>
-	<script type="text/javascript" src="<?php echo Yii::app()->theme->baseUrl ?>/assets/js/jquery-ui-1.10.0.custom.min.js"></script>
-	<script type="text/javascript" src="<?php echo Yii::app()->theme->baseUrl ?>/assets/js/jquery.selectBox.min.js"></script>
-	<script type="text/javascript" src="<?php echo Yii::app()->theme->baseUrl ?>/assets/js/jquery.cycle.lite.js"></script>
-	<script type="text/javascript" src="<?php echo Yii::app()->theme->baseUrl ?>/assets/js/jquery.jcarousel.min.js"></script>
+<!--	<script type="text/javascript" src="<?php // echo Yii::app()->theme->baseUrl ?>/assets/js/jquery-1.9.0.min.js"></script>-->
+	<script type="text/javascript" src="<?php  echo Yii::app()->theme->baseUrl ?>/assets/js/jquery-ui-1.10.0.custom.min.js"></script>
+	<script type="text/javascript" src="<?php  echo Yii::app()->theme->baseUrl ?>/assets/js/jquery.selectBox.min.js"></script>
+	<script type="text/javascript" src="<?php  echo Yii::app()->theme->baseUrl ?>/assets/js/jquery.cycle.lite.js"></script>
+	<script type="text/javascript" src="<?php  echo Yii::app()->theme->baseUrl ?>/assets/js/jquery.jcarousel.min.js"></script>
 
 	<script type="text/javascript" src="<?php echo Yii::app()->theme->baseUrl ?>/assets/js/site.js"></script>
 </head>

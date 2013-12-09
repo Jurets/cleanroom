@@ -27,9 +27,9 @@ if($model->mainCategory)
 }
 
 // Fancybox ext
-/*$this->widget('application.extensions.fancybox.EFancyBox', array(
+$this->widget('application.extensions.fancybox.EFancyBox', array(
 	'target'=>'a.thumbnail',
-));*/
+));
 
 ?>
 <style type="text/css">
