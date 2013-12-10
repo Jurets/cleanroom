@@ -116,7 +116,7 @@
                 }
             ?>
 
-              <div class="banner"><a href=""><img src="/themes/default/assets/images/banner01.jpg" width="198" height="298" alt="" /></a></div>
+              <div class="banner"><a href="<?php echo Yii::app()->settings->get('images', 'main_banner'); ?>"><img src="/themes/default/assets/images/banner01.jpg" width="198" height="298" alt="" /></a></div>
 
             </div>
             <div class="rc">

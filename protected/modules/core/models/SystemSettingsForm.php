@@ -45,7 +45,8 @@ class SystemSettingsForm extends CFormModel
 	public $images_watermark_active;
 	public $images_watermark_position_vertical;
 	public $images_watermark_position_horizontal;
-	public $images_watermark_opacity;
+    public $images_watermark_opacity;
+	public $images_main_banner;
 
 	public function init()
 	{
@@ -76,7 +77,8 @@ class SystemSettingsForm extends CFormModel
 			array('core_siteName, core_productsPerPage, core_productsPerPageAdmin, core_theme, core_editorTheme, core_editorHeight, core_editorAutoload, core_editorPartners, core_editorTelephone', 'required'),
 			array('images_path, images_thumbPath, images_url, images_thumbUrl, images_maxFileSize, images_maximum_image_size', 'required'),
 			array('images_watermark_image', 'validateWatermarkFile'),
-			array('images_watermark_active', 'boolean'),
+            array('images_watermark_active', 'boolean'),
+			array('images_main_banner', 'url'),
 			array('images_watermark_position_vertical', 'in', 'range'=>array_keys($this->getImageVerticalPositions())),
 			array('images_watermark_position_horizontal', 'in', 'range'=>array_keys($this->getImageHorizontalPositions())),
 			array('images_watermark_opacity', 'numerical', 'min'=>0, 'max'=>100),
@@ -110,7 +112,8 @@ class SystemSettingsForm extends CFormModel
 			'images_watermark_image'    => Yii::t('CoreModule.admin', 'Изображение'),
 			'images_watermark_position_vertical'   => Yii::t('CoreModule.admin', 'Позиция по вертикали'),
 			'images_watermark_position_horizontal' => Yii::t('CoreModule.admin', 'Позиция по горизонтали'),
-			'images_watermark_opacity'             => Yii::t('CoreModule.admin', 'Прозрачность'),
+            'images_watermark_opacity'             => Yii::t('CoreModule.admin', 'Прозрачность'),
+			'images_main_banner'             => Yii::t('CoreModule.admin', 'Ссылка баннера'),
 		);
 	}
 

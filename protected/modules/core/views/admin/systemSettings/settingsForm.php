@@ -45,7 +45,8 @@ return array(
 				'core_editorHeight'     =>  array('type'=>'text'),
                 'core_editorAutoload'   =>  array('type'=>'checkbox'),
                 'core_editorPartners'   =>  array('type'=>'SRichTextarea'),
-				'core_editorTelephone'  =>  array('type'=>'SRichTextarea'),
+                'core_editorTelephone'  =>  array('type'=>'SRichTextarea'),
+				'images_main_banner'    =>  array('type'=>'text'),
 			)
 		),
 		'images'=>array(
