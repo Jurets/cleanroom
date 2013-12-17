@@ -150,7 +150,8 @@ class CategoryController extends Controller
 			)
 		));
 
-		$this->provider->sort = StoreProduct::getCSort();
+//        $this->provider->sort = StoreProduct::getCSort();
+		$this->provider->sort = StoreProduct::getRatingSort();
         
         $this->layout = '//layouts/product';
 		$renderdata = array(

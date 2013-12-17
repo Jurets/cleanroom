@@ -92,7 +92,7 @@ $this->breadcrumbs[] = $this->model->name;
                                     <label for="">Сортировка: </label>
                                     <select id="sorter" name="sorter" onchange="applyCategorySorter(this)" class="sm">
                                         <option value="<?=Yii::app()->request->removeUrlParam('/store/category/view', 'sort')?>">---</option>
-                                        <option value="<?=Yii::app()->request->addUrlParam('/store/category/view', array('sort'=>'rating'))?>">по рейтингу</option>
+                                        <!--<option value="<?=Yii::app()->request->addUrlParam('/store/category/view', array('sort'=>'rating'))?>">по рейтингу</option>-->
                                         <!--<option value="<?=Yii::app()->request->addUrlParam('/store/category/view', array('sort'=>'rating.desc'))?>">Убыванию Рейтинга</option>-->
                                         <option value="<?=Yii::app()->request->addUrlParam('/store/category/view', array('sort'=>'price'))?>">по цене ↓</option>
                                         <option value="<?=Yii::app()->request->addUrlParam('/store/category/view', array('sort'=>'price.desc'))?>">по цене ↑</option>

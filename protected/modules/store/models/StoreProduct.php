@@ -130,7 +130,9 @@ class StoreProduct extends BaseModel
 			array('use_configurations', 'boolean', 'on'=>'insert'),
 			array('quantity, availability, manufacturer_id', 'numerical', 'integerOnly'=>true),
 			array('name, price', 'required'),
-			array('url', 'LocalUrlValidator'),
+            array('url', 'LocalUrlValidator'),
+            array('rating', 'safe'),
+			array('rating', 'numerical', 'integerOnly'=>true, 'min'=>0,'max'=>1000),
 			array('name, url, meta_title, meta_keywords, meta_description, layout, view, sku, auto_decrease_quantity', 'length', 'max'=>255),
 			array('short_description, full_description, discount', 'type', 'type'=>'string'),
 			// Search
@@ -827,6 +829,13 @@ class StoreProduct extends BaseModel
 		);
 		return $sort;
 	}
+    
+    public static function getRatingSort(){
+        $sort = new CSort;
+        $sort->defaultOrder = 't.rating ASC';
+        
+        return $sort;
+    }
 
 	/**
 	 * Method to get main image title.

@@ -171,7 +171,8 @@ border-radius:4px 4px 0 0;behavior: url(js/pie.htc);}
 .text2{padding:8px 16px 2px;}
 .text2 ul{margin:20px 0 20px 18px;}
 .text2 ul li{margin:0;list-style-image:url(../images/ul_marker2.png);}
-.text2 li a{color:#707281;}
+.text2 li a{color:#444;}
+/*.text2 li a{color:#707281;}*/
 
 .col2{overflow:hidden;margin:36px 0 22px;}
 .col2 .col{width:263px;border-top:3px solid #0090ff;padding:16px 0 0;}

@@ -37,6 +37,12 @@ return array(
 				'full_description'=>array(
 					'type'=>'SRichTextarea',
 				),
+                'rating'=>array(
+                    'type'=>'text',
+                    'placeholder'=>0,
+                    'label'=>'Порядок показа',
+                    'hint'=>'Число от 0 до 1000'
+                ),
 			),
 		),
 		'warehouse'=>array(
