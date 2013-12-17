@@ -100,7 +100,7 @@
 
             <div class="lc">
 
-              <h3 class="title2">Производители</h3>
+              <h3 class="title2"  style="font-weight: bold;font-size: 20px;">Производители</h3>
 
               <div class="brend_list">
 
@@ -115,7 +115,7 @@
                 <div class="clr"></div>
               </div>
 
-              <div class="banner"><a href="<?php echo Yii::app()->settings->get('images', 'main_banner'); ?>"><img src="/themes/default/assets/images/banner01.jpg" width="198" height="298" alt="" /></a></div>
+              <div class="banner"><a href="<?php echo Yii::app()->settings->get('images', 'main_banner'); ?>"><img src="/uploads/banner01.jpg" width="198" height="298" alt="" /></a></div>
 
             </div>
             <div class="rc">

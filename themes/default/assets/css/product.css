@@ -223,7 +223,7 @@ border-radius:4px 4px 0 0;behavior: url(js/pie.htc);}
 .item_inf table td{padding:5px 12px;font-size:11px;}
 .item_inf table td:first-child{font-size:12px;color:#013761;}
 /*.item_inf table .even td{background:#fbfbfb;}*/
-.item_inf table .even td{background: #D7FFFF; /*#C4FFFF;*/}
+.item_inf table .even td{background: #E7FFFF;/*#D7FFFF;*/ /*#C4FFFF;*/}
 
 .item_list3{padding:0 6px 0 10px;margin:0 0 30px;}
 .item_list3 h3{margin:0 0 22px;}
@@ -298,10 +298,13 @@ border-radius:3px;behavior: url(js/pie.htc);}
 .filter label{line-height:19px;color:#013761;margin-right:8px;display:block;float:left;}
 .filter .line{margin:0 0 2px;background:#e9f5ff;line-height:19px;padding:4px 16px 6px;}
 .filter .line2{padding:12px 16px;}
-.filter .key_word{float:left;width:260px;}
-.filter .key_word input{width:138px !important;}
+/*.filter .key_word{float:left;width:260px;}*/
+.filter .key_word{float:left;width:220px;}
+/*.filter .key_word input{width:138px !important;}*/
+.filter .key_word input{width:105px !important;}
 .filter .range{float:left;}
-.filter .range input{width:17px !important;margin-right:10px;}
+.filter .range input{width:38px !important;margin-right:10px;}
+/*.filter .range input{width:17px !important;margin-right:10px;}*/
 .filter .range label{margin-right:4px;}
 .filter .range select{width:54px;}
 .filter .sort{float:left;width:260px;}

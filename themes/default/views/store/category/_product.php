@@ -6,7 +6,7 @@
  $model = StoreProduct::model()->findByPk($data->id);
 ?>
 
-                        	<span class="item prod_item">
+                        	<span class="item prod_item" style="margin: 4px 2px;width: 203px;">
 								<?php
 								if($data->mainImage)
 									$imgSource = $data->mainImage->getUrl('208x204');

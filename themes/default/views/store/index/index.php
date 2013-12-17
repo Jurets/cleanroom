@@ -5,7 +5,7 @@
  */
 ?>
 
-<h1>Категории</h1>
+<h1 style="font-weight: bold;font-size: 20px;">Категории</h1>
                 <div class="rounded_wr">
                 	<div class="rounded">
                     	<div class="item_list">
@@ -27,10 +27,6 @@
             ));
 ?>
 
-<!--<h1 class="has_background"><?php echo $model->title; ?></h1>-->
-<!--<p>
-    <?php echo $model->short_description; ?>
-</p>-->
 <p>
     <?php echo $model->full_description; ?>
 </p>

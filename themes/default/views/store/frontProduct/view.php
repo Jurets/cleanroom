@@ -56,11 +56,11 @@ $this->widget('application.extensions.fancybox.EFancyBox', array(
                     <div class="fll">
                         <?php  // Main product image
                             if($model->mainImage)
-                                echo CHtml::link(CHtml::image($model->mainImage->getUrl('336x317', 'resize'), $model->mainImage->title), $model->mainImage->getUrl(), array('class'=>'thumbnail'));
+                                echo CHtml::link(CHtml::image($model->mainImage->getUrl('336x317', 'resize'), $model->mainImage->title, array('width'=>336)), $model->mainImage->getUrl(), array('class'=>'thumbnail'));
                             else
                                 echo CHtml::link(CHtml::image('http://placehold.it/340x250'), '#', array('class'=>'thumbnail'));
                         ?>
-                        <div class="sm_imgs jcarousel-skin-default">
+                        <div class="sm_imgs jcarousel-skin-default" style="margin-top: 10px;">
                             <div class="jcarousel " id="jcarousel">
                                 <ul>
                                 <?php // Display additional images
@@ -110,7 +110,7 @@ $this->widget('application.extensions.fancybox.EFancyBox', array(
                             </div>-->
                             
                             <?php if ($model->price > 0) { ?>
-                                <p class="price">Цена: 
+                                <p class="price" style="margin-bottom: 25px;">Цена: 
                                     <span><?php echo StoreProduct::formatPrice($model->toCurrentCurrency()).' '.Yii::app()->currency->active->symbol; ?></span>
                                 </p>
                                 <div style="clear: both;font-size: 16px">
@@ -119,6 +119,11 @@ $this->widget('application.extensions.fancybox.EFancyBox', array(
                                         echo '<span style="color:red; "><s>'.$model->toCurrentCurrency('originalPrice').' '.Yii::app()->currency->active->symbol.'</s></span>';
                                     ?>
                                 </div>
+                                <span class="btn2" style="float: left;">
+                                    <span>
+                                        <a href="<?php echo Yii::app()->createAbsoluteUrl('feedback') ?>" style="text-decoration: none;">Заказать</a>
+                                    </span>
+                                </span>
                             <?php } else { ?>
                                 <span class="btn2" style="float: left;">
                                     <span>
@@ -193,8 +198,9 @@ $this->widget('application.extensions.fancybox.EFancyBox', array(
                     <?php
                         if($model->getEavAttributes())
                         {
-                            $this->widget('application.modules.store.widgets.SAttributesTableRenderer', array(
+                            $this->widget('application.modules.store.widgets.ChistoAttributesTableRenderer', array(
                                 'model'=>$model,
+//                                'separator'=>'          ',
                                 'htmlOptions'=>array(
                                     'class'=>'attributes'
                                 ),
