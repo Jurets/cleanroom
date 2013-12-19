@@ -5,7 +5,7 @@
  */
 ?>
 
-<h1 style="font-weight: bold;font-size: 20px;">Категории</h1>
+<h1 style="font-weight: bold;font-size: 20px;">Категории продукции</h1>
                 <div class="rounded_wr">
                 	<div class="rounded">
                     	<div class="item_list">

@@ -99,7 +99,7 @@
 
             <div class="lc">
 
-              <h3 class="title">Категории</h3>
+              <h3 class="title">Категории продукции</h3>
 
             <?php
                 Yii::import('application.modules.store.models.StoreCategory');
