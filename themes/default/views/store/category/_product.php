@@ -32,7 +32,7 @@
                                 </span>
                                 <span class="btm_pad">
                                 	<?php if ($data->price > 0) : ?>
-                                		<span class="price"><strong><?=$data->price?></strong> <?=Yii::app()->currency->main->symbol?></span>
+                                		<span class="price"><strong><?=StoreProduct::formatPrice($data->price)?></strong> <?=Yii::app()->currency->main->symbol?></span>
                                 	<?php endif; ?>
                                 </span>
                             </span>
