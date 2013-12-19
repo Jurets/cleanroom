@@ -29,6 +29,9 @@ if($model->mainCategory)
 // Fancybox ext
 $this->widget('application.extensions.fancybox.EFancyBox', array(
 	'target'=>'a.thumbnail',
+    'config'=>array(
+        'hideOnContentClick'=>true,
+    )
 ));
 
 ?>
