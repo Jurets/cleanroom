@@ -95,6 +95,8 @@
                     <li><img src="/uploads/slider03.jpg" width="960" height="323" alt="" /></li>
                     <li><img src="/uploads/slider04.jpg" width="960" height="323" alt="" /></li>
                     <li><img src="/uploads/slider05.jpg" width="960" height="323" alt="" /></li>
+                    <li><img src="/uploads/slider06.jpg" width="960" height="323" alt="" /></li>
+                    <li><img src="/uploads/slider07.jpg" width="960" height="323" alt="" /></li>
                 </ul>
             </div>
 
