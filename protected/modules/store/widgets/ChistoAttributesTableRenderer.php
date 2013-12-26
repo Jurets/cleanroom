@@ -46,12 +46,13 @@ class ChistoAttributesTableRenderer extends SAttributesTableRenderer
 				echo CHtml::openTag('tr');
 				echo '<td>'.CHtml::encode($title).'</td>';
 //                echo '<td style="width:24px;"></td>';
-                if(count($data) - $countData >= 3){
-                    echo '<td colspan="2" style="width:24px;">'.CHtml::encode($value).'</td>';
-                }else{
-                    echo '<td style="width:40px;"></td>';
-				    echo '<td style="width:24px;">'.CHtml::encode($value).'</td>';
-                }
+//                if(count($data) - $countData >= 3){
+//                    echo '<td colspan="2" style="width:24px;text-align:right;">'.CHtml::encode($value).'</td>';
+//                }else{
+//                    echo '<td style="width:40px;"></td>';
+//				    echo '<td style="width:24px;text-align:right;">'.CHtml::encode($value).'</td>';
+//                }
+                echo '<td style="width:100px;text-align:right;">'.CHtml::encode($value).'</td>';
 				echo CHtml::closeTag('tr');
                 if($this->limitRows > 0){
                     if($this->limitRows === $count) break;
