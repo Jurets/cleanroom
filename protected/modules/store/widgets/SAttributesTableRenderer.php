@@ -1,5 +1,5 @@
 <?php
-
+Yii::import("application.components.StringHelper");
 /**
  * Render product attributes table.
  * Basically used on product view page.
@@ -21,6 +21,8 @@ class SAttributesTableRenderer extends CWidget
     public $limitRows = 0;
     public $separator = '';
     public $is_kit = 0;
+    public $isUsedInList = false;
+    public $titleLength = 20;
 
 	/**
 	 * @var array table element attributes
@@ -64,7 +66,10 @@ class SAttributesTableRenderer extends CWidget
 			foreach($data as $title=>$value)
 			{
 				echo CHtml::openTag('tr');
-				echo '<td>'.CHtml::encode($title).'</td>';
+                if($this->isUsedInList && mb_strlen(CHtml::encode($title), 'UTF-8') > $this->titleLength)
+                    echo '<td title="'.CHtml::encode($title).'">'.StringHelper::stringCut(CHtml::encode($title), 0, $this->titleLength).'</td>';
+                else
+				    echo '<td>'.CHtml::encode($title).'</td>';
                 if($this->separator !== '')
                     echo '<td>'.$this->separator.'</td>';
 				echo '<td>'.CHtml::encode($value).'</td>';

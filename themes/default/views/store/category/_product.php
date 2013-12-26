@@ -22,6 +22,7 @@
                                         $this->widget('application.modules.store.widgets.SAttributesTableRenderer', array(
                                             'model'=>$model,
                                             'limitRows'=>2,
+                                            'isUsedInList'=>true,
                                             'separator'=>' - ',
                                             'htmlOptions'=>array(
                                                 'class'=>'attributes'
