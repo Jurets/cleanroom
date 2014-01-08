@@ -46,7 +46,15 @@ return array(
                 'core_editorAutoload'   =>  array('type'=>'checkbox'),
                 'core_editorPartners'   =>  array('type'=>'SRichTextarea'),
                 'core_editorTelephone'  =>  array('type'=>'SRichTextarea'),
-				'images_main_banner'    =>  array('type'=>'text'),
+                'images_main_banner'    =>  array('type'=>'text'),
+                titleRow('Настройки слайдера'),
+                'core_slider01'    =>  array('type'=>'text', 'label'=>'Слайд №1'),
+                'core_slider02'    =>  array('type'=>'text', 'label'=>'Слайд №2'),
+                'core_slider03'    =>  array('type'=>'text', 'label'=>'Слайд №3'),
+                'core_slider04'    =>  array('type'=>'text', 'label'=>'Слайд №4'),
+                'core_slider05'    =>  array('type'=>'text', 'label'=>'Слайд №5'),
+                'core_slider06'    =>  array('type'=>'text', 'label'=>'Слайд №6'),
+				'core_slider07'    =>  array('type'=>'text', 'label'=>'Слайд №7'),
 			)
 		),
 		'images'=>array(

@@ -21,7 +21,14 @@ class SystemSettingsForm extends CFormModel
 	/**
 	 * @var string site theme name
 	 */
-	public $core_theme;
+    public $core_theme;
+    public $core_slider01;
+    public $core_slider02;
+    public $core_slider03;
+    public $core_slider04;
+    public $core_slider05;
+    public $core_slider06;
+    public $core_slider07;
 
 	/**
 	 * Editor settings
@@ -78,7 +85,8 @@ class SystemSettingsForm extends CFormModel
 			array('images_path, images_thumbPath, images_url, images_thumbUrl, images_maxFileSize, images_maximum_image_size', 'required'),
 			array('images_watermark_image', 'validateWatermarkFile'),
             array('images_watermark_active', 'boolean'),
-			array('images_main_banner', 'url'),
+            array('images_main_banner', 'url'),
+			array('core_slider01, core_slider02, core_slider03, core_slider04, core_slider05, core_slider06, core_slider07', 'length', 'max'=>100),
 			array('images_watermark_position_vertical', 'in', 'range'=>array_keys($this->getImageVerticalPositions())),
 			array('images_watermark_position_horizontal', 'in', 'range'=>array_keys($this->getImageHorizontalPositions())),
 			array('images_watermark_opacity', 'numerical', 'min'=>0, 'max'=>100),
