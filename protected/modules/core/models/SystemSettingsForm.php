@@ -86,7 +86,7 @@ class SystemSettingsForm extends CFormModel
 			array('images_watermark_image', 'validateWatermarkFile'),
             array('images_watermark_active', 'boolean'),
             array('images_main_banner', 'url'),
-			array('core_slider01, core_slider02, core_slider03, core_slider04, core_slider05, core_slider06, core_slider07', 'length', 'max'=>100),
+			array('core_slider01, core_slider02, core_slider03, core_slider04, core_slider05, core_slider06, core_slider07', 'url', 'defaultScheme'=>'http'),
 			array('images_watermark_position_vertical', 'in', 'range'=>array_keys($this->getImageVerticalPositions())),
 			array('images_watermark_position_horizontal', 'in', 'range'=>array_keys($this->getImageHorizontalPositions())),
 			array('images_watermark_opacity', 'numerical', 'min'=>0, 'max'=>100),

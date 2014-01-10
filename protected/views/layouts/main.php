@@ -88,13 +88,13 @@
 
             <div class="slider_wr">
             	<ul id="slider">
-                    <li><img src="<?=Yii::app()->settings->get('core', 'slider01')?>" width="960" height="323" alt="" /></li>
-                    <li><img src="<?=Yii::app()->settings->get('core', 'slider02')?>" width="960" height="323" alt="" /></li>
-                    <li><img src="<?=Yii::app()->settings->get('core', 'slider03')?>" width="960" height="323" alt="" /></li>
-                    <li><img src="<?=Yii::app()->settings->get('core', 'slider04')?>" width="960" height="323" alt="" /></li>
-                    <li><img src="<?=Yii::app()->settings->get('core', 'slider05')?>" width="960" height="323" alt="" /></li>
-                    <li><img src="<?=Yii::app()->settings->get('core', 'slider06')?>" width="960" height="323" alt="" /></li>
-                    <li><img src="<?=Yii::app()->settings->get('core', 'slider07')?>" width="960" height="323" alt="" /></li>
+                    <li><a href="<?=Yii::app()->settings->get('core', 'slider01')?>"><img src="/uploads/slider01.jpg" width="960" height="323" alt="" /></a></li>
+                    <li><a href="<?=Yii::app()->settings->get('core', 'slider02')?>"><img src="/uploads/slider02.jpg" width="960" height="323" alt="" /></a></li>
+                    <li><a href="<?=Yii::app()->settings->get('core', 'slider03')?>"><img src="/uploads/slider03.jpg" width="960" height="323" alt="" /></a></li>
+                    <li><a href="<?=Yii::app()->settings->get('core', 'slider04')?>"><img src="/uploads/slider04.jpg" width="960" height="323" alt="" /></a></li>
+                    <li><a href="<?=Yii::app()->settings->get('core', 'slider05')?>"><img src="/uploads/slider05.jpg" width="960" height="323" alt="" /></a></li>
+                    <li><a href="<?=Yii::app()->settings->get('core', 'slider06')?>"><img src="/uploads/slider06.jpg" width="960" height="323" alt="" /></a></li>
+                    <li><a href="<?=Yii::app()->settings->get('core', 'slider07')?>"><img src="/uploads/slider07.jpg" width="960" height="323" alt="" /></a></li>
                 </ul>
             </div>
 
